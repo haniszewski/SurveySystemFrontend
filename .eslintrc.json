@@ -19,7 +19,6 @@
     "import/order": "error",
     "import/no-mutable-exports": "error",
     "import/no-cycle": "error",
-    "import/no-default-export": "error",
     "@typescript-eslint/ban-types": [
       "error",
       {
