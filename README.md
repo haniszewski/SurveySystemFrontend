@@ -12,9 +12,9 @@ volta install pnpm
 
 ### Polecany edytor [vscode](https://code.visualstudio.com/)
 
-3. Wtyczki: 
-    - Eslint
-    - Prettier
+3. Wtyczki:
+   - Eslint
+   - Prettier
 
 Powinno się pojawić powiadomienie sugerujące ich instalację
 
@@ -28,8 +28,7 @@ pnpm i
 
 Sprawdzanie składni - dodanych jest sporo reguł, które wyłączają najbardziej irytujące właściwości eslinta, polecam mieć włączone w środowisku formatowanie kodu podczas zapisywania, część problemów zostanie wtedy naprawiona automatycznie.
 
-Jeśli ktoś natknie się na jakąś irytującą regułę to przed zmodyfikowaniem `.eslintrc.json`  warto to omówić z resztą zespołu, w wyjątkowych sytuacjach można użyć `// eslint-disable-next-line [nazwa reguły]`
-
+Jeśli ktoś natknie się na jakąś irytującą regułę to przed zmodyfikowaniem `.eslintrc.json` warto to omówić z resztą zespołu, w wyjątkowych sytuacjach można użyć `// eslint-disable-next-line [nazwa reguły]`
 
 # Część wygenerowana automatycznie przez next:
 
