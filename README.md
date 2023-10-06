@@ -1,3 +1,38 @@
+# Wymagane do zainstalowania:
+
+1. Node v18.18.0
+2. pnpm 8.8.0
+
+### Polecam [Volta](https://docs.volta.sh/guide/getting-started) jako version manager
+
+```bash
+volta install node
+volta install pnpm
+```
+
+### Polecany edytor [vscode](https://code.visualstudio.com/)
+
+3. Wtyczki: 
+    - Eslint
+    - Prettier
+
+Powinno się pojawić powiadomienie sugerujące ich instalację
+
+## Należy zainstalować zależności
+
+```bash
+pnpm i
+```
+
+## Eslint:
+
+Sprawdzanie składni - dodanych jest sporo reguł, które wyłączają najbardziej irytujące właściwości eslinta, polecam mieć włączone w środowisku formatowanie kodu podczas zapisywania, część problemów zostanie wtedy naprawiona automatycznie.
+
+Jeśli ktoś natknie się na jakąś irytującą regułę to przed zmodyfikowaniem `.eslintrc.json`  warto to omówić z resztą zespołu, w wyjątkowych sytuacjach można użyć `// eslint-disable-next-line [nazwa reguły]`
+
+
+# Część wygenerowana automatycznie przez next:
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -5,13 +40,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
