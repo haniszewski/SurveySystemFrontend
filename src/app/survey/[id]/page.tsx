@@ -1,15 +1,18 @@
-import QuestionList from "@/components/organisms/question-list";
+import Survey from "@/components/organisms/survey";
 
 const questions: Question[] = [
   {
+    id: "1",
     type: "text",
     text: "What is your name?",
   },
   {
+    id: "2",
     type: "text",
     text: "What is your email address?",
   },
   {
+    id: "3",
     type: "text",
     text: "What is your phone number?",
   },
@@ -28,7 +31,7 @@ export default async function SurveyPage({
         Survey {params.id}
       </h1>
       <div>
-        <QuestionList questions={questions} />
+        <Survey questions={questions} />
       </div>
     </div>
   );

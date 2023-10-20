@@ -1,4 +1,4 @@
-import QuestionItem from "../molecules/question-list/question-item";
+import QuestionItem from "./question-item";
 
 const QuestionList = ({
   questions,

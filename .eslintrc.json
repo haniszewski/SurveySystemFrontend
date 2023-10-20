@@ -43,7 +43,11 @@
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/require-await": "off",
-    "@typescript-eslint/return-await": ["error", "in-try-catch"],
+    "@typescript-eslint/return-await": [
+      "error",
+      "in-try-catch"
+    ],
+    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {

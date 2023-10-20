@@ -5,7 +5,7 @@ const QuestionItem = ({
 }: {
   question: Question;
 }) => {
-  const { text, details, options, type } = question;
+  const { id, text, details, options, type } = question;
 
   return (
     <div>
@@ -15,6 +15,7 @@ const QuestionItem = ({
       </div>
       <div>
         {createQuestionComponent(type, {
+          name: id,
           options: options,
         })}
       </div>
