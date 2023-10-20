@@ -26,6 +26,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.47.0
     version: 7.47.0(react@18.2.0)
+  solid:
+    specifier: link:@heroicons/react/20/solid
+    version: link:@heroicons/react/20/solid
 
 devDependencies:
   '@types/node':
