@@ -30,6 +30,17 @@ const questions: Question[] = [
       { value: "yellow", label: "Yellow" },
     ],
   },
+  {
+    id: "5",
+    type: "multi-choice",
+    text: "Which of the following programming languages do you know?",
+    options: [
+      { value: "javascript", label: "JavaScript" },
+      { value: "python", label: "Python" },
+      { value: "java", label: "Java" },
+      { value: "csharp", label: "C#" },
+    ],
+  },
 ];
 
 export default async function SurveyPage({
@@ -40,7 +51,7 @@ export default async function SurveyPage({
   };
 }) {
   return (
-    <div className="flex h-full flex-col items-center bg-sky-50 pt-10">
+    <div className="flex min-h-full flex-col items-center bg-sky-50 pt-10">
       <div className="flex w-2/3 flex-col gap-5">
         <SurveyHeader
           title={`Survey ${params.id}`}
