@@ -2,8 +2,12 @@ type Question = {
   id: string;
   type: QuestionType;
   text: string;
+  label?: string;
   details?: string;
-  options?: string[];
+  options?: {
+    label: string;
+    value: string;
+  }[];
 };
 
 type QuestionType =

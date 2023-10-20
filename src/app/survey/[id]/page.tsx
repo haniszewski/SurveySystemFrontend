@@ -5,17 +5,30 @@ const questions: Question[] = [
   {
     id: "1",
     type: "text",
+    label: "Name",
     text: "What is your name?",
   },
   {
     id: "2",
     type: "text",
+    details: "We will keep your email confidential.",
     text: "What is your email address?",
   },
   {
     id: "3",
     type: "text",
     text: "What is your phone number?",
+  },
+  {
+    id: "4",
+    type: "single-choice",
+    text: "What is your favorite color?",
+    options: [
+      { value: "red", label: "Red" },
+      { value: "blue", label: "Blue" },
+      { value: "green", label: "Green" },
+      { value: "yellow", label: "Yellow" },
+    ],
   },
 ];
 
