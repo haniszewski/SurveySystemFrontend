@@ -1,3 +1,4 @@
+import SurveyHeader from "@/components/atoms/survey/survey-header";
 import Survey from "@/components/organisms/survey";
 
 const questions: Question[] = [
@@ -26,12 +27,15 @@ export default async function SurveyPage({
   };
 }) {
   return (
-    <div className="flex h-full flex-col items-center bg-gray-100 pt-10">
-      <h1 className="mb-4 text-center text-3xl font-bold">
-        Survey {params.id}
-      </h1>
-      <div>
-        <Survey questions={questions} />
+    <div className="flex h-full flex-col items-center bg-sky-50 pt-10">
+      <div className="flex w-2/3 flex-col gap-5">
+        <SurveyHeader
+          title={`Survey ${params.id}`}
+          description="Please fill out the survey"
+        />
+        <div>
+          <Survey questions={questions} />
+        </div>
       </div>
     </div>
   );
