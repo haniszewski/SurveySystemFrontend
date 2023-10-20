@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import TitleBar from "@/components/atoms/title-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +13,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} h-screen w-full bg-white`}>
+        <nav className="absolute left-0 top-0 h-20 w-full">
+          <TitleBar title={"Ankiety"} />
+        </nav>
+        <main className="h-screen w-full pt-20">{children}</main>
+      </body>
     </html>
   );
 }
