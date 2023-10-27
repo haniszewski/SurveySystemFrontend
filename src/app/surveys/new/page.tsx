@@ -1,7 +1,7 @@
 import SurveyHeader from "@/components/atoms/survey/survey-header";
-import NewQuestionList from "@/components/molecules/create-survey/new-question-list";
+import NewSurvey from "@/components/organisms/new-survey";
 
-const questionTypes: QuestionType[] = ["text", "text", "single-choice"];
+const questionTypes: QuestionType[] = ["text", "text", "text"];
 
 export default async function NewSurveyPage() {
   return (
@@ -12,7 +12,7 @@ export default async function NewSurveyPage() {
           description="Please fill out the survey"
         />
         <div>
-          <NewQuestionList questionTypes={questionTypes} />
+          <NewSurvey questionTypes={questionTypes} />
         </div>
       </div>
     </div>

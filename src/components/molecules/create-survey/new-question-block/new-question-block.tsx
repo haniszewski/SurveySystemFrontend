@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import NewQuestionBlockEditing from "./new-question-block-editing";
+import NewQuestionBlockSaved from "./new-question-block-saved";
 import EditButton from "@/components/atoms/new-survey/edit-button";
 import DeleteButton from "@/components/atoms/new-survey/delete-button";
 import SaveButton from "@/components/atoms/new-survey/save-button";
@@ -18,12 +20,16 @@ const NewQuestionBlock = ({ id, type }: { id: string; type: QuestionType }) => {
           </h3>
         </div>
         {isEditing ? (
-          <div className="w-full">Editing</div>
+          <NewQuestionBlockEditing id={id} type={type} />
         ) : (
-          <div className="w-full">Saved</div>
+          <NewQuestionBlockSaved id={id} type={type} />
         )}
       </div>
-      <div className="buttons flex w-1/6 justify-end gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+      <div
+        className={`buttons flex w-1/6 justify-end gap-2 ${
+          !isEditing && "opacity-0 transition-opacity group-hover:opacity-100"
+        }`}
+      >
         {!isEditing ? (
           <>
             <EditButton onClick={() => setIsEditing(!isEditing)} />

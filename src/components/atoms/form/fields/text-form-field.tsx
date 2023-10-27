@@ -13,17 +13,28 @@ const TextFormField = ({
   label,
   variant = "standard",
   type = "text",
+  disabled = false,
 }: TextFieldProps) => {
   const { register } = useFormContext();
   return (
     <div className="w-full">
-      <TextField
-        type={type}
-        {...register(name)}
-        label={label}
-        variant={variant}
-        sx={{ width: "100%" }}
-      />
+      {disabled ? (
+        <TextField
+          type={type}
+          disabled
+          label={label}
+          variant={variant}
+          sx={{ width: "100%" }}
+        />
+      ) : (
+        <TextField
+          type={type}
+          {...register(name)}
+          label={label}
+          variant={variant}
+          sx={{ width: "100%" }}
+        />
+      )}
     </div>
   );
 };

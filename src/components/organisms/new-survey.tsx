@@ -1,8 +1,11 @@
-const NewSurvey = () => {
+import NewSurveyForm from "../atoms/new-survey/new-survey-form";
+import NewQuestionList from "../molecules/create-survey/new-question-list";
+
+const NewSurvey = ({ questionTypes }: { questionTypes: QuestionType[] }) => {
   return (
-    <div>
-      <h1>New Survey</h1>
-    </div>
+    <NewSurveyForm>
+      <NewQuestionList questionTypes={questionTypes} />
+    </NewSurveyForm>
   );
 };
 
