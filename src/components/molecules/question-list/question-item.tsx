@@ -1,7 +1,7 @@
-import { createQuestionComponent } from "./question-map";
+import { createQuestionComponent } from "./form-fields-map";
 
-const QuestionItem = ({ question }: { question: Question }) => {
-  const { id, text, details, options, type, label } = question;
+const QuestionItem = ({ id, question }: { id: string; question: Question }) => {
+  const { text, details, options, type, label } = question;
 
   return (
     <div className="w-full rounded-md bg-white p-5 shadow">

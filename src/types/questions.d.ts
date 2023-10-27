@@ -1,5 +1,6 @@
+type QuestionMapType = Record<string, Question>;
+
 type Question = {
-  id: string;
   type: QuestionType;
   text: string;
   label?: string;

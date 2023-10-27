@@ -3,7 +3,7 @@ import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import SingleChoiceFormField from "@/components/atoms/form/fields/single-choice-form-field";
 import MultiChoiceFormField from "@/components/atoms/form/fields/multi-choice-form-field";
 
-const questionMap: Record<QuestionType, React.ElementType> = {
+const formFieldsMap: Record<QuestionType, React.ElementType> = {
   text: TextFormField,
   "single-choice": SingleChoiceFormField,
   "multi-choice": MultiChoiceFormField,
@@ -15,5 +15,5 @@ export const createQuestionComponent = (
     [key: string]: unknown;
   },
 ) => {
-  return React.createElement(questionMap[type], props);
+  return React.createElement(formFieldsMap[type], props);
 };

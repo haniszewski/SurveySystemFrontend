@@ -1,37 +1,18 @@
 import SurveyHeader from "@/components/atoms/survey/survey-header";
 import Survey from "@/components/organisms/survey";
 
-const questions: Question[] = [
-  {
-    id: "1",
+const questions: QuestionMapType = {
+  alsjdgahk: {
     type: "text",
     label: "Name",
     text: "What is your name?",
   },
-  {
-    id: "2",
+  dakhshkdajd: {
     type: "text",
     details: "We will keep your email confidential.",
     text: "What is your email address?",
   },
-  {
-    id: "3",
-    type: "text",
-    text: "What is your phone number?",
-  },
-  {
-    id: "4",
-    type: "single-choice",
-    text: "What is your favorite color?",
-    options: [
-      { value: "red", label: "Red" },
-      { value: "blue", label: "Blue" },
-      { value: "green", label: "Green" },
-      { value: "yellow", label: "Yellow" },
-    ],
-  },
-  {
-    id: "5",
+  kajshdak: {
     type: "multi-choice",
     text: "Which of the following programming languages do you know?",
     options: [
@@ -41,7 +22,17 @@ const questions: Question[] = [
       { value: "csharp", label: "C#" },
     ],
   },
-];
+  asdlkasdkasd: {
+    type: "single-choice",
+    text: "Which of the following programming languages do you know?",
+    options: [
+      { value: "javascript", label: "JavaScript" },
+      { value: "python", label: "Python" },
+      { value: "java", label: "Java" },
+      { value: "csharp", label: "C#" },
+    ],
+  },
+};
 
 export default async function SurveyPage({
   params,
