@@ -1,4 +1,4 @@
-import NewQuestionBlock from "./new-question-block";
+import NewQuestionBlock from "./new-question-block/new-question-block";
 
 const NewQuestionList = ({
   questionTypes,
@@ -8,7 +8,7 @@ const NewQuestionList = ({
   return (
     <div className="flex w-full flex-col gap-5">
       {questionTypes.map((type, idx) => (
-        <NewQuestionBlock key={idx} type={type} />
+        <NewQuestionBlock key={idx} id={`${idx}`} type={type} />
       ))}
     </div>
   );

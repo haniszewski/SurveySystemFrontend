@@ -12,6 +12,11 @@ const questions: QuestionMapType = {
     details: "We will keep your email confidential.",
     text: "What is your email address?",
   },
+  asdkasjjl: {
+    type: "text",
+    details: "We will keep your email confidential.",
+    text: "What is your favourite color?",
+  },
   kajshdak: {
     type: "multi-choice",
     text: "Which of the following programming languages do you know?",
@@ -24,12 +29,13 @@ const questions: QuestionMapType = {
   },
   asdlkasdkasd: {
     type: "single-choice",
-    text: "Which of the following programming languages do you know?",
+    text: "Which of the following is your favorite programming language",
     options: [
       { value: "javascript", label: "JavaScript" },
       { value: "python", label: "Python" },
       { value: "java", label: "Java" },
       { value: "csharp", label: "C#" },
+      { value: "other", label: "Other" },
     ],
   },
 };
