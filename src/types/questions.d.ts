@@ -2,12 +2,14 @@ type QuestionMapType = Record<string, Question>;
 
 type Question = {
   type: QuestionType;
+  order: number;
   text: string;
   label?: string;
   details?: string;
+  required?: boolean;
   options?: {
     label: string;
-    value: string;
+    order: number;
   }[];
 };
 

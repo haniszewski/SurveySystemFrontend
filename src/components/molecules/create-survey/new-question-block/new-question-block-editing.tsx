@@ -11,17 +11,26 @@ const NewQuestionBlockEditing = ({
     return `${id}.${name}`;
   }
 
+  const hasOptions = type === "single-choice" || type === "multi-choice";
+
   return (
     <div className="flex flex-col gap-2">
-      <TextFormField name={createName("text")} label="Enter question" />
+      <TextFormField name={createName("text")} label="Question text" />
       <TextFormField
         name={createName("details")}
-        label="Enter question details (optional)"
+        label="Question details (optional)"
       />
-      <TextFormField
-        name={createName("label")}
-        label="Enter placeholder (optional)"
-      />
+      {!hasOptions ? (
+        <TextFormField
+          name={createName("label")}
+          label="Placeholder (optional)"
+        />
+      ) : (
+        <TextFormField
+          name={createName("options")}
+          label="Options (one per line)"
+        />
+      )}
     </div>
   );
 };

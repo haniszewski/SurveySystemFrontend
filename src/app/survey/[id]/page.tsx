@@ -2,22 +2,22 @@ import SurveyHeader from "@/components/atoms/survey/survey-header";
 import Survey from "@/components/organisms/survey";
 
 const questions: QuestionMapType = {
-  alsjdgahk: {
+  text_1: {
     type: "text",
     label: "Name",
     text: "What is your name?",
   },
-  dakhshkdajd: {
+  text_2: {
     type: "text",
     details: "We will keep your email confidential.",
     text: "What is your email address?",
   },
-  asdkasjjl: {
+  text_3: {
     type: "text",
     details: "We will keep your email confidential.",
     text: "What is your favourite color?",
   },
-  kajshdak: {
+  multi_choice: {
     type: "multi-choice",
     text: "Which of the following programming languages do you know?",
     options: [
@@ -27,7 +27,7 @@ const questions: QuestionMapType = {
       { value: "csharp", label: "C#" },
     ],
   },
-  asdlkasdkasd: {
+  single_choice: {
     type: "single-choice",
     text: "Which of the following is your favorite programming language",
     options: [
