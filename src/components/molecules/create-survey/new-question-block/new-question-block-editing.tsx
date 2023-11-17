@@ -1,4 +1,5 @@
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
+import { QuestionType } from "@/types/questionType";
 
 const NewQuestionBlockEditing = ({
   id,
@@ -11,7 +12,8 @@ const NewQuestionBlockEditing = ({
     return `${id}.${name}`;
   }
 
-  const hasOptions = type === "single-choice" || type === "multi-choice";
+  const hasOptions =
+    type === QuestionType.SINGLE_CHOICE || type === QuestionType.MULTI_CHOICE;
 
   return (
     <div className="flex flex-col gap-2">

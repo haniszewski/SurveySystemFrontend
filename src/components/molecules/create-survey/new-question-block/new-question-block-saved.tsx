@@ -2,6 +2,7 @@
 
 import { useFormContext } from "react-hook-form";
 import { createQuestionComponent } from "../../question-list/form-fields-map";
+import { type QuestionType } from "@/types/questionType";
 
 const NewQuestionBlockSaved = ({
   id,
@@ -26,7 +27,7 @@ const NewQuestionBlockSaved = ({
       </div>
       <div className="w-full">
         {createQuestionComponent(type, {
-          name: id,
+          name: String(id),
           label: getValue("label"),
           options: getValue("options"),
           disabled: true,

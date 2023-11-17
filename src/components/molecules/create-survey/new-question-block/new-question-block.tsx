@@ -7,6 +7,7 @@ import NewQuestionBlockSaved from "./new-question-block-saved";
 import EditButton from "@/components/atoms/new-survey/edit-button";
 import DeleteButton from "@/components/atoms/new-survey/delete-button";
 import SaveButton from "@/components/atoms/new-survey/save-button";
+import { type QuestionType } from "@/types/questionType";
 
 const NewQuestionBlock = ({
   id,

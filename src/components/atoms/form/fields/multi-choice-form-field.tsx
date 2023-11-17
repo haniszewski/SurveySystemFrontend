@@ -4,22 +4,22 @@ import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 interface MultiChoiceFormFieldProps extends FormField {
-  options: {
-    value: string;
-    label: string;
+  choices: {
+    order: string;
+    text: string;
   }[];
 }
 
-const MultiChoiceFormField = ({ name, options }: MultiChoiceFormFieldProps) => {
+const MultiChoiceFormField = ({ name, choices }: MultiChoiceFormFieldProps) => {
   const { register } = useFormContext();
   return (
     <FormGroup>
-      {options.map(({ value, label }) => (
+      {choices.map(({ order, text }) => (
         <FormControlLabel
-          key={value}
-          value={value}
+          key={order}
+          value={order}
           control={<Checkbox {...register(name)} />}
-          label={label}
+          label={text}
         />
       ))}
     </FormGroup>

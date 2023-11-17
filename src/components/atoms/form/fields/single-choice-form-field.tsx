@@ -4,26 +4,26 @@ import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 interface SingleInputFormFieldProps extends FormField {
-  options: {
-    value: string;
-    label: string;
+  choices: {
+    order: string;
+    text: string;
   }[];
 }
 
 const SingleChoiceFormField = ({
   name,
-  options,
+  choices,
 }: SingleInputFormFieldProps) => {
   const { register } = useFormContext();
 
   return (
     <RadioGroup>
-      {options.map(({ value, label }) => (
+      {choices.map(({ order, text }) => (
         <FormControlLabel
-          key={value}
-          value={value}
+          key={order}
+          value={order}
           control={<Radio {...register(name)} />}
-          label={label}
+          label={text}
         />
       ))}
     </RadioGroup>

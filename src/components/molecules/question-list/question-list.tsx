@@ -1,10 +1,10 @@
 import QuestionItem from "./question-item";
 
-const QuestionList = ({ questions }: { questions: QuestionMapType }) => {
+const QuestionList = ({ questions }: { questions: Question[] }) => {
   return (
     <div className="flex w-full flex-col gap-5">
-      {Object.keys(questions).map((id) => (
-        <QuestionItem key={id} id={id} question={questions[id]} />
+      {questions.map((question) => (
+        <QuestionItem key={question.order} question={question} />
       ))}
     </div>
   );

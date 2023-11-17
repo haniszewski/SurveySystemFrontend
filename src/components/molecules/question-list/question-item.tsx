@@ -1,7 +1,7 @@
 import { createQuestionComponent } from "./form-fields-map";
 
-const QuestionItem = ({ id, question }: { id: string; question: Question }) => {
-  const { text, details, options, type, label } = question;
+const QuestionItem = ({ question }: { question: Question }) => {
+  const { text, details, choices, type, label } = question;
 
   return (
     <div className="w-full rounded-md bg-white p-5 shadow">
@@ -11,9 +11,9 @@ const QuestionItem = ({ id, question }: { id: string; question: Question }) => {
       </div>
       <div className="w-full">
         {createQuestionComponent(type, {
-          name: id,
+          name: String(question.order),
           label: label,
-          options: options,
+          choices: choices,
         })}
       </div>
     </div>

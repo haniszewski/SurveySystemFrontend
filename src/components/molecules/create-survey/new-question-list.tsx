@@ -3,6 +3,7 @@
 import { useState } from "react";
 import NewQuestionBlock from "./new-question-block/new-question-block";
 import NewQuestionButton from "@/components/atoms/new-survey/new-question-button";
+import { QuestionType } from "@/types/questionType";
 
 type QuestionListItem = {
   type: QuestionType;
@@ -43,7 +44,7 @@ const NewQuestionList = () => {
         />
       ))}
       <hr />
-      <NewQuestionButton clickHandler={() => addQuestion("text")} />
+      <NewQuestionButton clickHandler={() => addQuestion(QuestionType.TEXT)} />
       <button
         type="button"
         onClick={() => {
