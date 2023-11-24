@@ -6,6 +6,7 @@ import { useFormContext } from "react-hook-form";
 interface TextFieldProps extends FormField {
   variant?: TextFieldVariants;
   type?: "text" | "number";
+  defaultValue?: string;
 }
 
 const TextFormField = ({
@@ -14,6 +15,7 @@ const TextFormField = ({
   variant = "standard",
   type = "text",
   disabled = false,
+  defaultValue,
 }: TextFieldProps) => {
   const { register } = useFormContext();
   return (
@@ -33,6 +35,7 @@ const TextFormField = ({
           label={label}
           variant={variant}
           sx={{ width: "100%" }}
+          value={defaultValue}
         />
       )}
     </div>

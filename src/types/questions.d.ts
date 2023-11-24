@@ -5,8 +5,10 @@ type Question = {
   label?: string;
   details?: string;
   required?: boolean;
-  choices?: {
-    text: string;
-    order: number;
-  }[];
+  choices?: Choice[];
+};
+
+type Choice = {
+  text: string;
+  order: number;
 };

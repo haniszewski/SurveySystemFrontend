@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import SurveyHeader from "@/components/atoms/survey/survey-header";
 import Survey from "@/components/organisms/survey";
 
@@ -42,6 +43,8 @@ import Survey from "@/components/organisms/survey";
 
 export const dynamic = "force-dynamic";
 
+const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
+
 export default async function SurveyPage({
   params,
 }: {
@@ -49,20 +52,30 @@ export default async function SurveyPage({
     id: string;
   };
 }) {
-  const res = await fetch(`http://10.182.35.8:8000/api/survey/${params.id}/`);
-  const data = (await res.json()) as Survey;
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/survey/${params.id}/`);
 
-  return (
-    <div className="flex min-h-full flex-col items-center bg-sky-50 pt-10">
-      <div className="flex w-2/3 flex-col gap-5">
-        <SurveyHeader
-          title={`Survey ${data.name}`}
-          description="Please fill out the survey"
-        />
-        <div>
-          <Survey questions={data.questions} />
+    if (!res.ok) {
+      throw new Error("Survey not found");
+    }
+
+    const data = (await res.json()) as Survey;
+
+    return (
+      <div className="flex min-h-full flex-col items-center bg-sky-50 pt-10">
+        <div className="flex w-2/3 flex-col gap-5">
+          <SurveyHeader
+            title={`Survey ${data.name}`}
+            description="Please fill out the survey"
+          />
+          <div>
+            <Survey questions={data.questions} />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Nie znaleziono ankiety");
+    return notFound();
+  }
 }

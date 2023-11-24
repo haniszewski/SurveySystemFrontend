@@ -29,7 +29,7 @@ const NewQuestionBlockSaved = ({
         {createQuestionComponent(type, {
           name: String(id),
           label: getValue("label"),
-          options: getValue("options"),
+          choices: getValue("choices") ?? [],
           disabled: true,
         })}
       </div>

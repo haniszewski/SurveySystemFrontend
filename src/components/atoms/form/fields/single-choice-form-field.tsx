@@ -12,19 +12,32 @@ interface SingleInputFormFieldProps extends FormField {
 
 const SingleChoiceFormField = ({
   name,
+  disabled = false,
   choices,
 }: SingleInputFormFieldProps) => {
   const { register } = useFormContext();
 
   return (
     <RadioGroup>
-      {choices.map(({ order, text }) => (
-        <FormControlLabel
-          key={order}
-          value={order}
-          control={<Radio {...register(name)} />}
-          label={text}
-        />
+      {choices.map(({ order, text }, idx: number) => (
+        <div key={idx}>
+          {!disabled ? (
+            <FormControlLabel
+              key={order}
+              value={order}
+              control={<Radio {...register(name)} />}
+              label={text}
+            />
+          ) : (
+            <FormControlLabel
+              key={order}
+              value={order}
+              control={<Radio />}
+              disabled
+              label={text}
+            />
+          )}
+        </div>
       ))}
     </RadioGroup>
   );

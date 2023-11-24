@@ -44,7 +44,9 @@ const NewQuestionList = () => {
         />
       ))}
       <hr />
-      <NewQuestionButton clickHandler={() => addQuestion(QuestionType.TEXT)} />
+      <NewQuestionButton
+        clickHandler={() => addQuestion(QuestionType.SINGLE_CHOICE)}
+      />
       <button
         type="button"
         onClick={() => {

@@ -1,3 +1,4 @@
+import NewOptionsList from "./new-options-list";
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import { QuestionType } from "@/types/questionType";
 
@@ -28,10 +29,7 @@ const NewQuestionBlockEditing = ({
           label="Placeholder (optional)"
         />
       ) : (
-        <TextFormField
-          name={createName("options")}
-          label="Options (one per line)"
-        />
+        <NewOptionsList id={Number(id)} />
       )}
     </div>
   );
