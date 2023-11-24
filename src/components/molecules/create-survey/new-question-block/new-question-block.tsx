@@ -19,11 +19,10 @@ const NewQuestionBlock = ({
   deleteHandler: (id: number) => void;
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const { register, setValue, unregister } = useFormContext();
+  const { register, unregister } = useFormContext();
 
   useEffect(() => {
-    register(`${id}.type`);
-    setValue(`${id}.type`, type);
+    register(`${id}.type`, { value: type });
   }, []);
 
   function onDelete() {

@@ -11,38 +11,50 @@ type QuestionListItem = {
 };
 
 const NewQuestionList = () => {
-  const [questions, setQuestions] = useState<QuestionListItem[]>([]);
+  const [questions, setQuestions] = useState<Record<number, QuestionListItem>>(
+    {},
+  );
 
   function addQuestion(type: QuestionType) {
-    setQuestions((questions) => [
-      ...questions,
-      {
-        type: type,
-        order: questions.length + 1,
-      },
-    ]);
-
-    return questions.length + 1;
+    setQuestions((prevQuestions) => {
+      const newOrder = parseInt(Object.keys(prevQuestions).at(-1) ?? "-1") + 1;
+      return {
+        ...prevQuestions,
+        [newOrder]: {
+          type: type,
+          order: Object.keys(questions).length,
+        },
+      };
+    });
   }
 
   function removeQuestion(id: number) {
-    setQuestions((questions) =>
-      questions
-        .filter(({ order }) => order !== id)
-        .map((question, idx) => ({ ...question, order: idx + 1 })),
-    );
+    setQuestions((prevQuestions) => {
+      const updatedQuestions = { ...prevQuestions };
+      delete updatedQuestions[id];
+
+      Object.keys(updatedQuestions).forEach((key, idx) => {
+        const question = updatedQuestions[parseInt(key)];
+        question.order = idx;
+      });
+
+      return updatedQuestions;
+    });
   }
 
   return (
     <div className="flex w-full flex-col gap-5">
-      {questions.map((question, idx) => (
-        <NewQuestionBlock
-          deleteHandler={removeQuestion}
-          key={idx}
-          id={`${idx}`}
-          type={question.type}
-        />
-      ))}
+      {Object.keys(questions).map((questionId) => {
+        const question = questions[parseInt(questionId)];
+        return (
+          <NewQuestionBlock
+            deleteHandler={removeQuestion}
+            key={questionId}
+            id={questionId}
+            type={question.type}
+          />
+        );
+      })}
       <hr />
       <NewQuestionButton
         clickHandler={() => addQuestion(QuestionType.SINGLE_CHOICE)}
