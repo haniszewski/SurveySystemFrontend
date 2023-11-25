@@ -8,10 +8,8 @@ import DeleteButton from "@/components/atoms/new-survey/delete-button";
 const NewOptionsList = ({ id }: { id: number }) => {
   const { getValues, register, unregister } = useFormContext();
 
-  const [choices, setChoices] = useState<Choice[]>(
-    ((getValues(`${id}.choices`) as Choice[]) ?? []).filter(
-      (choice) => choice != null,
-    ),
+  const [choices, setChoices] = useState<Record<number, Choice>>(
+    (getValues(`${id}.choices`) as Record<number, Choice>) ?? {},
   );
 
   function createName(order: number) {
@@ -19,30 +17,37 @@ const NewOptionsList = ({ id }: { id: number }) => {
   }
 
   const addChoice = () => {
-    console.log(choices);
-    register(`${createName(choices.length)}.order`, { value: choices.length });
-    setChoices((choices) => [
+    const newId = parseInt(Object.keys(choices).at(-1) ?? "-1") + 1;
+    register(`${createName(newId)}`);
+    register(`${createName(newId)}.order`, {
+      value: Object.keys(choices).length,
+    });
+    setChoices((choices) => ({
       ...choices,
-      {
-        order: choices.length,
+      [newId]: {
+        order: Object.keys(choices).length,
         text: "",
       },
-    ]);
+    }));
   };
 
   const removeChoice = (order: number) => {
-    console.log(createName(order));
-    setChoices((choices) =>
-      choices
-        .filter((choice) => choice.order !== order)
-        .map((choice, idx) => ({ ...choice, order: idx })),
-    );
+    const updatedChoices = { ...choices };
+    delete updatedChoices[order];
+    unregister(`${createName(order)}`);
+
+    Object.keys(updatedChoices).forEach((key, idx) => {
+      const choice = updatedChoices[parseInt(key)];
+      choice.order = idx;
+    });
+
+    setChoices(updatedChoices);
   };
 
   return (
     <>
       <ol className="flex flex-col justify-center gap-2">
-        {choices.map(({ order }) => (
+        {Object.values(choices).map(({ order }) => (
           <li key={order} className="flex justify-between gap-2">
             <TextFormField
               name={`${createName(order)}.text`}

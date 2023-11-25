@@ -76,6 +76,6 @@ export default async function SurveyPage({
     );
   } catch (error) {
     console.error("Nie znaleziono ankiety");
-    return notFound();
+    notFound();
   }
 }
