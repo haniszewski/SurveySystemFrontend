@@ -18,7 +18,7 @@ const NewQuestionBlockEditing = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <TextFormField name={createName("text")} label="Question text" />
+      <TextFormField name={createName("text")} label="Question text" required />
       <TextFormField
         name={createName("details")}
         label="Question details (optional)"

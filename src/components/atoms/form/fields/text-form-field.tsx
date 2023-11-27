@@ -1,6 +1,7 @@
 "use client";
 
 import TextField, { type TextFieldVariants } from "@mui/material/TextField";
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface TextFieldProps extends FormField {
@@ -16,8 +17,15 @@ const TextFormField = ({
   type = "text",
   disabled = false,
   defaultValue,
+  required = false,
 }: TextFieldProps) => {
-  const { register } = useFormContext();
+  const { register, getFieldState } = useFormContext();
+  const { error } = getFieldState(name);
+
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
+
   return (
     <div className="w-full">
       {disabled ? (
@@ -31,7 +39,11 @@ const TextFormField = ({
       ) : (
         <TextField
           type={type}
-          {...register(name)}
+          {...(required
+            ? register(name, { required: "To pole jest wymagane." })
+            : register(name))}
+          error={!!error}
+          helperText={error?.message}
           label={label}
           variant={variant}
           sx={{ width: "100%" }}
