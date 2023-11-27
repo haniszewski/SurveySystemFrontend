@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormContext } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import DeleteButton from "@/components/atoms/new-survey/delete-button";
@@ -17,6 +17,10 @@ const NewOptionsList = ({ id }: { id: number }) => {
       },
     },
   );
+
+  useEffect(() => {
+    register(`${id}.choices.0.order`, { value: 0 });
+  }, []);
 
   function createName(order: number) {
     return `${id}.choices.${order}`;
@@ -39,10 +43,10 @@ const NewOptionsList = ({ id }: { id: number }) => {
 
   const removeChoice = (order: number) => {
     if (Object.keys(choices).length <= 1) return;
+    unregister(`${createName(order)}`);
     setChoices((choices) => {
       const updatedChoices = { ...choices };
       delete updatedChoices[order];
-      unregister(`${createName(order)}`);
 
       Object.keys(updatedChoices).forEach((key, idx) => {
         const choice = updatedChoices[parseInt(key)];

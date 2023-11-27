@@ -1,7 +1,6 @@
 "use client";
 
 import TextField, { type TextFieldVariants } from "@mui/material/TextField";
-import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface TextFieldProps extends FormField {
@@ -21,10 +20,6 @@ const TextFormField = ({
 }: TextFieldProps) => {
   const { register, getFieldState } = useFormContext();
   const { error } = getFieldState(name);
-
-  useEffect(() => {
-    console.log(error);
-  }, [error]);
 
   return (
     <div className="w-full">

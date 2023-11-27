@@ -27,6 +27,7 @@ const NewQuestionBlock = ({
 }) => {
   const [isEditing, setIsEditing] = useState(true);
   const { register, unregister, trigger, formState } = useFormContext();
+  // eslint-disable-next-line
   const { errors } = formState;
 
   useEffect(() => {
@@ -71,13 +72,11 @@ const NewQuestionBlock = ({
         }`}
       >
         {!isEditing ? (
-          <>
-            <EditButton onClick={() => setIsEditing(!isEditing)} />
-            <DeleteButton onClick={onDelete} />
-          </>
+          <EditButton onClick={() => setIsEditing(!isEditing)} />
         ) : (
           <SaveButton onClick={onSave} />
         )}
+        <DeleteButton onClick={onDelete} />
       </div>
     </div>
   );
