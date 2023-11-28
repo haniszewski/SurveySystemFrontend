@@ -1,3 +1,4 @@
+import SubmitButton from "../atoms/form/submit-button";
 import NewSurveyForm from "../atoms/new-survey/new-survey-form";
 import NewQuestionList from "../molecules/create-survey/new-question-list";
 import NewSurveyHeader from "../molecules/create-survey/new-survey-header";
@@ -11,6 +12,7 @@ const NewSurvey = () => {
           <NewQuestionList />
         </div>
       </div>
+      <SubmitButton text="Utwórz ankietę" />
     </NewSurveyForm>
   );
 };

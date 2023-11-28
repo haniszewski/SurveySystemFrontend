@@ -7,7 +7,7 @@ import NewQuestionBlockSaved from "./new-question-block-saved";
 import EditButton from "@/components/atoms/new-survey/edit-button";
 import DeleteButton from "@/components/atoms/new-survey/delete-button";
 import SaveButton from "@/components/atoms/new-survey/save-button";
-import { type QuestionType } from "@/types/questionType";
+import { QuestionType } from "@/types/questionType";
 
 const NewQuestionBlock = ({
   id,
@@ -19,7 +19,10 @@ const NewQuestionBlock = ({
   deleteHandler: (id: number) => void;
 }) => {
   const [isEditing, setIsEditing] = useState(true);
-  const { register, unregister, trigger, formState } = useFormContext();
+  const { register, unregister, trigger, formState, setValue } =
+    useFormContext();
+  const [actualType, setActualType] = useState<QuestionType>(type);
+
   // needed for formState to update
   // eslint-disable-next-line
   const { errors } = formState;
@@ -34,7 +37,7 @@ const NewQuestionBlock = ({
   }
 
   function onSave() {
-    trigger(`${id}`)
+    trigger(id)
       .then((result) => {
         if (result) {
           setIsEditing(false);
@@ -43,13 +46,27 @@ const NewQuestionBlock = ({
       .catch(() => {});
   }
 
+  const hasOptions = (type: QuestionType) =>
+    type === QuestionType.SINGLE_CHOICE || type === QuestionType.MULTI_CHOICE;
+
+  function onTypeChange(newType: QuestionType) {
+    if (!hasOptions(newType)) unregister(`${id}.choices`);
+
+    setValue(`${id}.type`, newType);
+    setActualType(newType);
+  }
+
   return (
     <div className="new-question-block group flex w-full items-center justify-between rounded-md bg-white p-5 shadow">
       <div className="question w-5/6">
         {isEditing ? (
-          <NewQuestionBlockEditing id={id} type={type} />
+          <NewQuestionBlockEditing
+            id={id}
+            type={actualType}
+            onTypeChange={onTypeChange}
+          />
         ) : (
-          <NewQuestionBlockSaved id={id} type={type} />
+          <NewQuestionBlockSaved id={id} type={actualType} />
         )}
       </div>
       <div

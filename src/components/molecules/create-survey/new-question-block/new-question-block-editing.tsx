@@ -1,6 +1,5 @@
 "use client";
 
-import { useFormContext } from "react-hook-form";
 import { useState } from "react";
 import { type SelectChangeEvent } from "@mui/material";
 import NewOptionsList from "./new-options-list";
@@ -11,11 +10,12 @@ import { QuestionType } from "@/types/questionType";
 const NewQuestionBlockEditing = ({
   id,
   type,
+  onTypeChange,
 }: {
   id: string;
   type: QuestionType;
+  onTypeChange: (newType: QuestionType) => void;
 }) => {
-  const { setValue, resetField } = useFormContext();
   const [fieldType, setFieldType] = useState<QuestionType>(type);
 
   function createName(name: string) {
@@ -24,9 +24,8 @@ const NewQuestionBlockEditing = ({
 
   function handleChange(event: SelectChangeEvent) {
     const newType = parseInt(event.target.value);
-    resetField(id);
     setFieldType(newType);
-    setValue(createName("type"), newType);
+    onTypeChange(newType);
   }
 
   const hasOptions =
