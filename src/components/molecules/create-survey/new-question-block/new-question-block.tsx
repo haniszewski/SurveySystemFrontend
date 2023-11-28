@@ -7,14 +7,7 @@ import NewQuestionBlockSaved from "./new-question-block-saved";
 import EditButton from "@/components/atoms/new-survey/edit-button";
 import DeleteButton from "@/components/atoms/new-survey/delete-button";
 import SaveButton from "@/components/atoms/new-survey/save-button";
-import { QuestionType } from "@/types/questionType";
-
-const FieldTypeNameMap = {
-  [QuestionType.SINGLE_CHOICE]: "Pole jednokrotnego wyboru",
-  [QuestionType.MULTI_CHOICE]: "Pole wielokrotnego wyboru",
-  [QuestionType.TEXT]: "Pole tekstowe",
-  [QuestionType.NUMBER]: "Pole numeryczne",
-};
+import { type QuestionType } from "@/types/questionType";
 
 const NewQuestionBlock = ({
   id,
@@ -27,6 +20,7 @@ const NewQuestionBlock = ({
 }) => {
   const [isEditing, setIsEditing] = useState(true);
   const { register, unregister, trigger, formState } = useFormContext();
+  // needed for formState to update
   // eslint-disable-next-line
   const { errors } = formState;
 
@@ -52,14 +46,6 @@ const NewQuestionBlock = ({
   return (
     <div className="new-question-block group flex w-full items-center justify-between rounded-md bg-white p-5 shadow">
       <div className="question w-5/6">
-        <div className="mb-2">
-          <h2 className="text-lg">
-            {/* eslint-disable-next-line */}
-            {/* @ts-ignore */}
-            <span className="font-bold">{FieldTypeNameMap[type]} </span>
-            <span className="text-gray-400">{"(cannot be changed)"}</span>
-          </h2>
-        </div>
         {isEditing ? (
           <NewQuestionBlockEditing id={id} type={type} />
         ) : (

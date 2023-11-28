@@ -7,7 +7,7 @@ import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import DeleteButton from "@/components/atoms/new-survey/delete-button";
 
 const NewOptionsList = ({ id }: { id: number }) => {
-  const { getValues, register, unregister } = useFormContext();
+  const { getValues, register, unregister, setValue } = useFormContext();
 
   const [choices, setChoices] = useState<Record<number, Choice>>(
     (getValues(`${id}.choices`) as Record<number, Choice>) ?? {
@@ -57,9 +57,18 @@ const NewOptionsList = ({ id }: { id: number }) => {
     });
   };
 
+  useEffect(() => {
+    Object.keys(choices).forEach((key) => {
+      setValue(
+        `${createName(parseInt(key))}.order`,
+        choices[parseInt(key)].order,
+      );
+    });
+  }, [choices]);
+
   return (
     <div>
-      <p className="mt-3 text-lg font-bold">Options:</p>
+      <p className="mt-3 text-lg font-bold">Opcje:</p>
       <div className="flex flex-col items-center">
         <ol className="flex w-full flex-col justify-center gap-2">
           {Object.keys(choices).map((id, idx) => (
@@ -67,7 +76,7 @@ const NewOptionsList = ({ id }: { id: number }) => {
               <p className="w-5 text-lg">{idx + 1}.</p>
               <TextFormField
                 name={`${createName(parseInt(id))}.text`}
-                label={`Option ${idx + 1}`}
+                label={`Opcja ${idx + 1}`}
                 required
               />
               {Object.keys(choices).length > 1 && (
@@ -81,7 +90,7 @@ const NewOptionsList = ({ id }: { id: number }) => {
           onClick={addChoice}
           className="mt-4 flex items-center gap-2"
         >
-          <PlusCircleIcon className="w-5" /> Add option
+          <PlusCircleIcon className="w-5" /> Dodaj opcję
         </button>
       </div>
     </div>
