@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import SurveyHeader from "@/components/atoms/survey/survey-header";
 import Survey from "@/components/organisms/survey";
 
 // const questions: QuestionMapType = {
@@ -63,14 +62,8 @@ export default async function SurveyPage({
 
     return (
       <div className="flex min-h-full flex-col items-center bg-sky-50 pt-10">
-        <div className="flex w-2/3 flex-col gap-5">
-          <SurveyHeader
-            title={`Survey ${data.name}`}
-            description="Please fill out the survey"
-          />
-          <div>
-            <Survey questions={data.questions} />
-          </div>
+        <div className="w-2/3">
+          <Survey questions={data.questions} name={data.name} />
         </div>
       </div>
     );

@@ -5,21 +5,18 @@ import { FormProvider, useForm } from "react-hook-form";
 const Form = ({
   children,
   onSubmit,
+  id,
 }: {
   children: React.ReactNode;
   onSubmit: (values: unknown) => void;
+  id?: string;
 }) => {
   const methods = useForm();
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <form id={id} onSubmit={methods.handleSubmit(onSubmit)}>
         {children}
-        <input
-          type="submit"
-          value="Submit"
-          disabled={methods.formState.isSubmitting}
-        />
       </form>
     </FormProvider>
   );

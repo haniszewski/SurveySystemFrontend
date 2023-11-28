@@ -67,14 +67,6 @@ const NewQuestionList = () => {
       <NewQuestionButton
         clickHandler={() => addQuestion(QuestionType.SINGLE_CHOICE)}
       />
-      <button
-        type="button"
-        onClick={() => {
-          console.log(questions);
-        }}
-      >
-        show
-      </button>
     </div>
   );
 };
