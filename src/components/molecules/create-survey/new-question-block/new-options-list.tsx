@@ -29,9 +29,6 @@ const NewOptionsList = ({ id }: { id: number }) => {
   const addChoice = () => {
     if (Object.keys(choices).length >= 10) return;
     const newId = parseInt(Object.keys(choices).at(-1) ?? "-1") + 1;
-    register(`${createName(newId)}.order`, {
-      value: Object.keys(choices).length,
-    });
     setChoices((choices) => ({
       ...choices,
       [newId]: {

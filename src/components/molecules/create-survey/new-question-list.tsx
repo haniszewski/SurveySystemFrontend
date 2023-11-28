@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormContext } from "react-hook-form";
 import NewQuestionBlock from "./new-question-block/new-question-block";
 import NewQuestionButton from "@/components/atoms/new-survey/new-question-button";
 import { QuestionType } from "@/types/questionType";
@@ -11,6 +12,7 @@ type QuestionListItem = {
 };
 
 const NewQuestionList = () => {
+  const { setValue } = useFormContext();
   const [questions, setQuestions] = useState<Record<number, QuestionListItem>>(
     {},
   );
@@ -41,6 +43,12 @@ const NewQuestionList = () => {
       return updatedQuestions;
     });
   }
+
+  useEffect(() => {
+    Object.keys(questions).forEach((key) => {
+      setValue(`${key}.order`, questions[parseInt(key)].order);
+    });
+  }, [questions]);
 
   return (
     <div className="flex w-full flex-col gap-5">
