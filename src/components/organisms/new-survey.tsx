@@ -8,11 +8,13 @@ const NewSurvey = () => {
     <NewSurveyForm>
       <div className="flex flex-col gap-7">
         <NewSurveyHeader />
-        <div className="mb-20">
+        <div className="mb-17">
           <NewQuestionList />
         </div>
       </div>
-      <SubmitButton text="Utwórz ankietę" />
+      <div className="mb-10 flex justify-end">
+        <SubmitButton text="Zapisz" />
+      </div>
     </NewSurveyForm>
   );
 };

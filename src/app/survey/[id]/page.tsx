@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Survey from "@/components/organisms/survey";
+import ConfirmLeavingPage from "@/components/atoms/common/confirm-leaving-page";
 
 // const questions: QuestionMapType = {
 //   text_1: {
@@ -65,6 +66,7 @@ export default async function SurveyPage({
         <div className="w-2/3">
           <Survey questions={data.questions} name={data.name} />
         </div>
+        <ConfirmLeavingPage />
       </div>
     );
   } catch (error) {

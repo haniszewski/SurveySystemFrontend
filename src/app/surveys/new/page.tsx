@@ -1,3 +1,4 @@
+import ConfirmLeavingPage from "@/components/atoms/common/confirm-leaving-page";
 import NewSurvey from "@/components/organisms/new-survey";
 
 export default async function NewSurveyPage() {
@@ -6,6 +7,7 @@ export default async function NewSurveyPage() {
       <div className="w-2/3">
         <NewSurvey />
       </div>
+      <ConfirmLeavingPage />
     </div>
   );
 }
