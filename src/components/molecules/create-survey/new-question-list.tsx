@@ -11,11 +11,17 @@ type QuestionListItem = {
   order: number;
 };
 
+function loadQuestions(): Record<number, QuestionListItem> {}
+
 const NewQuestionList = () => {
-  const { setValue } = useFormContext();
+  const { setValue, getValues } = useFormContext();
   const [questions, setQuestions] = useState<Record<number, QuestionListItem>>(
     {},
   );
+
+  useEffect(() => {
+    console.log(getValues());
+  }, []);
 
   function addQuestion(type: QuestionType) {
     setQuestions((prevQuestions) => {

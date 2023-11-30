@@ -7,7 +7,7 @@ export default async function NewSurveyPage() {
       <div className="w-2/3">
         <NewSurvey />
       </div>
-      <ConfirmLeavingPage />
+      {/* <ConfirmLeavingPage /> */}
     </div>
   );
 }
