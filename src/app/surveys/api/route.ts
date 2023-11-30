@@ -1,15 +1,14 @@
-import { type z } from "zod";
+import { collectFormData } from "./helpers";
 import { newSurveySchema } from "@/schemas/survey";
 
-type NewSurvey = z.infer<typeof newSurveySchema>;
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as NewSurvey;
-    newSurveySchema.parse(body);
+    const newSurvey = await collectFormData(request);
+    newSurveySchema.parse(newSurvey);
 
-    console.dir(body, { depth: Infinity });
+    console.dir(newSurvey, { depth: Infinity });
 
     const res = await fetch(`${BACKEND_URL}/api/survey/create/`, {
       method: "POST",
@@ -17,7 +16,7 @@ export async function POST(request: Request) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(newSurvey),
     });
 
     if (res.status !== 201) {
