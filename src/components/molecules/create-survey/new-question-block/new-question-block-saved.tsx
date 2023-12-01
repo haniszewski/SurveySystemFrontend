@@ -14,7 +14,7 @@ const NewQuestionBlockSaved = ({
   const { getValues } = useFormContext();
 
   function getValue(name: string) {
-    return getValues(`${id}.${name}`) as string;
+    return getValues(`questions.${id}.${name}`) as string;
   }
 
   return (

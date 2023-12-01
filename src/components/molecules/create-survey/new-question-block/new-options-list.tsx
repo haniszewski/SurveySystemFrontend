@@ -10,7 +10,7 @@ const NewOptionsList = ({ id }: { id: number }) => {
   const { getValues, register, unregister, setValue } = useFormContext();
 
   const [choices, setChoices] = useState<Record<number, Choice>>(
-    (getValues(`${id}.choices`) as Record<number, Choice>) ?? {
+    (getValues(`questions.${id}.choices`) as Record<number, Choice>) ?? {
       0: {
         order: 0,
         text: "",
@@ -19,11 +19,11 @@ const NewOptionsList = ({ id }: { id: number }) => {
   );
 
   useEffect(() => {
-    register(`${id}.choices.0.order`, { value: 0 });
+    register(`questions.${id}.choices.0.order`, { value: 0 });
   }, []);
 
   function createName(order: number) {
-    return `${id}.choices.${order}`;
+    return `questions.${id}.choices.${order}`;
   }
 
   const addChoice = () => {

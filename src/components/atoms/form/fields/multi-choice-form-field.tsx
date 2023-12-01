@@ -8,20 +8,36 @@ interface MultiChoiceFormFieldProps extends FormField {
     order: string;
     text: string;
   }[];
+  disabled?: boolean;
 }
 
-const MultiChoiceFormField = ({ name, choices }: MultiChoiceFormFieldProps) => {
+const MultiChoiceFormField = ({
+  name,
+  choices,
+  disabled = false,
+}: MultiChoiceFormFieldProps) => {
   const { register } = useFormContext();
+
   return (
     <FormGroup>
-      {choices.map(({ order, text }) => (
-        <FormControlLabel
-          key={order}
-          value={order}
-          control={<Checkbox {...register(name)} />}
-          label={text}
-        />
-      ))}
+      {choices.map(({ order, text }) =>
+        !disabled ? (
+          <FormControlLabel
+            key={order}
+            value={order}
+            control={<Checkbox {...register(name)} />}
+            label={text}
+          />
+        ) : (
+          <FormControlLabel
+            key={order}
+            value={order}
+            control={<Checkbox />}
+            disabled
+            label={text}
+          />
+        ),
+      )}
     </FormGroup>
   );
 };

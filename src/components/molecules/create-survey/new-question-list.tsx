@@ -46,7 +46,7 @@ const NewQuestionList = () => {
 
   useEffect(() => {
     Object.keys(questions).forEach((key) => {
-      setValue(`${key}.order`, questions[parseInt(key)].order);
+      setValue(`questions.${key}.order`, questions[parseInt(key)].order);
     });
   }, [questions]);
 

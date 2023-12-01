@@ -28,16 +28,16 @@ const NewQuestionBlock = ({
   const { errors } = formState;
 
   useEffect(() => {
-    register(`${id}.type`, { value: type });
+    register(`questions.${id}.type`, { value: type });
   }, []);
 
   function onDelete() {
-    unregister(id);
+    unregister(`questions.${id}`);
     deleteHandler(parseInt(id));
   }
 
   function onSave() {
-    trigger(id)
+    trigger(`questions.${id}`)
       .then((result) => {
         if (result) {
           setIsEditing(false);
@@ -50,9 +50,9 @@ const NewQuestionBlock = ({
     type === QuestionType.SINGLE_CHOICE || type === QuestionType.MULTI_CHOICE;
 
   function onTypeChange(newType: QuestionType) {
-    if (!hasOptions(newType)) unregister(`${id}.choices`);
+    if (!hasOptions(newType)) unregister(`questions.${id}.choices`);
 
-    setValue(`${id}.type`, newType);
+    setValue(`questions.${id}.type`, newType);
     setActualType(newType);
   }
 

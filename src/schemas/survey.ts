@@ -37,4 +37,6 @@ export const newSurveySchema = z.object({
   questions: questionSchema.array(),
 });
 
-export const formDataSchema = z.record(questionSchema);
+export const formDataSchema = z.object({
+  questions: z.array(questionSchema),
+});

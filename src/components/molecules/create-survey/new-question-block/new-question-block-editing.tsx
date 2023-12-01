@@ -19,7 +19,7 @@ const NewQuestionBlockEditing = ({
   const [fieldType, setFieldType] = useState<QuestionType>(type);
 
   function createName(name: string) {
-    return `${id}.${name}`;
+    return `questions.${id}.${name}`;
   }
 
   function handleChange(event: SelectChangeEvent) {
