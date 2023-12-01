@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       body: JSON.stringify(newSurvey),
     });
 
-    if (res.status !== 201) {
+    if (!res.ok) {
       throw new Error(await res.text());
     }
 

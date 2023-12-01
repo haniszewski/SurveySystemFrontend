@@ -64,7 +64,7 @@ export default async function SurveyPage({
     return (
       <div className="flex min-h-full flex-col items-center bg-sky-50 pt-10">
         <div className="w-2/3">
-          <Survey questions={data.questions} name={data.name} />
+          <Survey id={params.id} questions={data.questions} name={data.name} />
         </div>
         <ConfirmLeavingPage />
       </div>
