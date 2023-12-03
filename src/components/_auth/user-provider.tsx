@@ -1,25 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Loading from "../atoms/common/loading";
 import { UserContext } from "./user-context";
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
   const [token, setToken] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    console.log("provider");
     const token = Cookies.get("token");
     const email = Cookies.get("email");
-
-    if (!token) {
-      router.push("/");
-    }
+    const username = Cookies.get("username");
 
     setToken(token || "");
     setEmail(email || "");
+    setUsername(username || "");
+    setIsAuthenticated(!!token);
+    setLoading(false);
   }, []);
 
   return (
@@ -27,9 +30,11 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         token,
         email,
+        username,
+        isAuthenticated,
       }}
     >
-      {token && children}
+      {loading ? <Loading /> : children}
     </UserContext.Provider>
   );
 };

@@ -20,6 +20,8 @@ export async function POST(request: Request) {
 
     const headers = new Headers();
     headers.set("Set-Cookie", `token=${access}; `);
+    headers.set("Set-Cookie", `email=${body.email}; `);
+    headers.set("Set-Cookie", `username=${body.username || body.email}; `);
 
     return new Response(new Blob(), { status: 200, headers });
   } catch (error: unknown) {

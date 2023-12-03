@@ -2,6 +2,7 @@ type User = {
   email: string;
   username: string;
   token: string;
+  isAuthenticated: boolean;
 };
 
 type CreateUser = {
@@ -12,5 +13,6 @@ type CreateUser = {
 
 type LoginUser = {
   email: string;
+  username?: string;
   password: string;
 };

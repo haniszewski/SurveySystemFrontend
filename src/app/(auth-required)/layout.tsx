@@ -1,9 +1,9 @@
-import UserProvider from "@/components/_auth/user-provider";
+import AuthRequiredWrapper from "@/components/_auth/auth-required-wrapper";
 
 export default function LoggedInLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <UserProvider>{children}</UserProvider>;
+  return <AuthRequiredWrapper>{children}</AuthRequiredWrapper>;
 }
