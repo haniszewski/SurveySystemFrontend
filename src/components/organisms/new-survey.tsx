@@ -1,7 +1,7 @@
-import SubmitButton from "../atoms/form/submit-button";
 import NewSurveyForm from "../atoms/new-survey/new-survey-form";
 import NewQuestionList from "../molecules/create-survey/new-question-list";
 import NewSurveyHeader from "../molecules/create-survey/new-survey-header";
+import NewSurveySubmit from "../molecules/create-survey/new-survey-submit";
 
 const NewSurvey = () => {
   return (
@@ -12,9 +12,7 @@ const NewSurvey = () => {
           <NewQuestionList />
         </div>
       </div>
-      <div className="mb-10 flex justify-end">
-        <SubmitButton text="Zapisz" />
-      </div>
+      <NewSurveySubmit />
     </NewSurveyForm>
   );
 };

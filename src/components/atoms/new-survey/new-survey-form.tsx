@@ -1,11 +1,13 @@
 "use client";
 
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 import Form from "../form/form";
 import { UserContext } from "@/components/_auth/user-context";
 
 const NewSurveyForm = ({ children }: { children: React.ReactNode }) => {
   const { token } = useContext(UserContext);
+  const router = useRouter();
 
   const submitHandler = (data: unknown) => {
     console.log(data);
@@ -17,8 +19,7 @@ const NewSurveyForm = ({ children }: { children: React.ReactNode }) => {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then(() => router.push(`/user-panel`))
       .catch((err) => console.log(err));
   };
 

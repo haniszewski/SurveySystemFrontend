@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Form from "../form/form";
 
 const SurveyForm = ({
@@ -9,6 +10,7 @@ const SurveyForm = ({
   children: React.ReactNode;
   id: string;
 }) => {
+  const router = useRouter();
   const submitHandler = (data: unknown) => {
     const payload = {
       id: parseInt(id),
@@ -22,10 +24,7 @@ const SurveyForm = ({
       },
       body: JSON.stringify(payload),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      })
+      .then(() => router.push(`/dziekujemy`))
       .catch((err) => {
         console.error(err);
       });
