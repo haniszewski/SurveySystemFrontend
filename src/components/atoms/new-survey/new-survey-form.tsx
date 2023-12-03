@@ -1,8 +1,12 @@
 "use client";
 
+import { useContext } from "react";
 import Form from "../form/form";
+import { UserContext } from "@/components/_auth/user-context";
 
 const NewSurveyForm = ({ children }: { children: React.ReactNode }) => {
+  const { token } = useContext(UserContext);
+
   const submitHandler = (data: unknown) => {
     console.log(data);
     fetch("/surveys/api", {
@@ -10,6 +14,7 @@ const NewSurveyForm = ({ children }: { children: React.ReactNode }) => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

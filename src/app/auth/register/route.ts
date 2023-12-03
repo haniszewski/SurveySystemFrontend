@@ -1,23 +1,15 @@
-import { collectFormData } from "./helpers";
-import { newSurveySchema } from "@/schemas/survey";
-
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
 
 export async function POST(request: Request) {
   try {
-    const newSurvey = await collectFormData(request);
-    newSurveySchema.parse(newSurvey);
-
-    console.dir(newSurvey, { depth: Infinity });
-
-    const res = await fetch(`${BACKEND_URL}/api/survey/create/`, {
+    const body = (await request.json()) as CreateUser;
+    const res = await fetch(`${BACKEND_URL}/api/account/create/`, {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
-        Authorization: request.headers.get("Authorization") || "",
       },
-      body: JSON.stringify(newSurvey),
+      body: JSON.stringify(body),
     });
 
     if (!res.ok) {
