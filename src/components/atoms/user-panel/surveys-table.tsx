@@ -1,54 +1,94 @@
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+"use client";
 
-const SurveysTable = ({
-  rows,
-}: {
-  rows: Array<{
-    title: string;
-    startDate: string;
-    endDate: string;
-    link: string;
-    analysisLink: string;
-  }>;
-}) => {
+import { useContext, useEffect, useState } from "react";
+import {
+  DataGrid,
+  type GridColDef,
+  type GridRenderCellParams,
+} from "@mui/x-data-grid";
+import Link from "next/link";
+import { Button } from "@mui/material";
+import { UserContext } from "@/components/_auth/user-context";
+
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
+
+const columns: GridColDef[] = [
+  {
+    field: "title",
+    headerName: "Nazwa",
+    flex: 2,
+    headerClassName: "table-header",
+  },
+  {
+    field: "startDate",
+    headerName: "Data rozpoczęcia",
+    flex: 1,
+    headerClassName: "table-header",
+  },
+  {
+    field: "endDate",
+    headerName: "Data zakończenia",
+    flex: 1,
+    headerClassName: "table-header",
+  },
+  {
+    field: "link",
+    headerName: "Link",
+    flex: 2,
+    headerClassName: "table-header",
+  },
+  {
+    field: "analysisLink",
+    headerName: "Link do analizy",
+    flex: 1,
+    headerClassName: "table-header",
+    renderCell: (params: GridRenderCellParams) => (
+      <Link href={params.value as string}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="rounded-xl"
+          style={{ padding: "8px 16px" }}
+        >
+          Analizuj
+        </Button>
+      </Link>
+    ),
+  },
+];
+
+const SurveysTable = () => {
+  const { token } = useContext(UserContext);
+  const [rows, setRows] = useState<Row[]>([]);
+
+  useEffect(() => {
+    fetch(`${FRONTEND_URL}/surveys/api`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data: Row[]) => {
+        setRows(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Tytuł</TableCell>
-            <TableCell align="right">Data rozpoczęcia</TableCell>
-            <TableCell align="right">Data zakończenia</TableCell>
-            <TableCell align="right">Link</TableCell>
-            <TableCell align="right">Akcje</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <TableRow
-              key={index}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.title}
-              </TableCell>
-              <TableCell align="right">{row.startDate}</TableCell>
-              <TableCell align="right">{row.endDate}</TableCell>
-              <TableCell align="right">{row.link}</TableCell>
-              <TableCell align="right">{row.analysisLink}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="h-full w-full rounded-lg bg-white p-3">
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        disableRowSelectionOnClick
+        sx={{
+          padding: "1px",
+        }}
+        autoPageSize
+      />
+    </div>
   );
 };
 
