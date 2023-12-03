@@ -3,10 +3,15 @@ import React from 'react';
 import TextFormField from '@/components/atoms/form/fields/text-form-field';
 import Form from '@/components/atoms/form/form';
 import Button from "@mui/material/Button";
+import Link from 'next/link';
 
-export default function LoginPage() {
+const LoginPage = () => {
+  const handleLogin = (values: any) => {
+    console.log(values);
+  };
+
   return (
-    <Form onSubmit={() => {}}>
+    <Form onSubmit={handleLogin}>
       <div className="flex justify-center items-center h-screen">
         <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
           <h2 className="text-4xl font-extrabold mb-8 text-center text-blue-500">Login</h2>
@@ -15,6 +20,7 @@ export default function LoginPage() {
             label="Email"
             type="text"
           />
+          <div className="mb-4"></div>
           <TextFormField
             name="password"
             label="Password"
@@ -25,13 +31,16 @@ export default function LoginPage() {
               Login
             </Button>
           </div>
+          <div className="mt-4 text-center">
+            <Link href="/register">
+              <a className="text-blue-500 hover:underline">Register</a>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="absolute top-4 right-4">
-        <Button variant="outlined" className="text-white font-semibold border-white hover:border-gray-200">
-          Register
-        </Button>
       </div>
     </Form>
   );
 }
+
+export default LoginPage;
+
