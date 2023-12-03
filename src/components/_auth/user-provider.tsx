@@ -13,16 +13,18 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log("provider");
     const token = Cookies.get("token");
     const email = Cookies.get("email");
     const username = Cookies.get("username");
+
+    console.log("provider", token, email, username);
 
     setToken(token || "");
     setEmail(email || "");
     setUsername(username || "");
     setIsAuthenticated(!!token);
     setLoading(false);
+    console.log("provider");
   }, []);
 
   return (
