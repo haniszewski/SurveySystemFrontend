@@ -7,7 +7,7 @@ import {
   type GridRenderCellParams,
 } from "@mui/x-data-grid";
 import Link from "next/link";
-import { Button } from "@mui/material";
+import { ChartPieIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import { UserContext } from "@/components/_auth/user-context";
 
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
@@ -33,26 +33,29 @@ const columns: GridColDef[] = [
   },
   {
     field: "link",
-    headerName: "Link",
+    headerName: "Link do ankiety",
     flex: 2,
     headerClassName: "table-header",
+    renderCell: (params: GridRenderCellParams) => (
+      <Link href={params.value as string}>{params.value}</Link>
+    ),
   },
   {
     field: "analysisLink",
-    headerName: "Link do analizy",
-    flex: 1,
+    headerName: "Akcje",
+    flex: 0.5,
     headerClassName: "table-header",
+    headerAlign: "center",
+    align: "center",
     renderCell: (params: GridRenderCellParams) => (
-      <Link href={params.value as string}>
-        <Button
-          variant="contained"
-          color="primary"
-          className="rounded-xl"
-          style={{ padding: "8px 16px" }}
-        >
-          Analizuj
-        </Button>
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link href={params.value as string}>
+          <ChartPieIcon className="h-6 w-6 text-green-500" />
+        </Link>
+        <Link href={`/ankiety/${params.id}`}>
+          <PencilSquareIcon className="h-6 w-6 text-blue-500" />
+        </Link>
+      </div>
     ),
   },
 ];
@@ -78,7 +81,7 @@ const SurveysTable = () => {
   }, []);
 
   return (
-    <div className="h-full w-full rounded-lg bg-white p-3">
+    <div className="h-full w-5/6 rounded-lg bg-white p-3">
       <DataGrid
         rows={rows}
         columns={columns}
