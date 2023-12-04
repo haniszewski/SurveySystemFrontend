@@ -1,4 +1,4 @@
-import SubmitButton from "../atoms/form/submit-button";
+import DynamicSubmitButton from "../atoms/form/dynamic-submit-button";
 import NewSurveyForm from "../atoms/new-survey/new-survey-form";
 import NewQuestionList from "../molecules/create-survey/new-question-list";
 import NewSurveyHeader from "../molecules/create-survey/new-survey-header";
@@ -13,7 +13,7 @@ const NewSurvey = () => {
         </div>
       </div>
       <div className="mb-10 flex justify-end">
-        <SubmitButton text="Zapisz" />
+        <DynamicSubmitButton />
       </div>
     </NewSurveyForm>
   );

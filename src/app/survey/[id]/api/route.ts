@@ -9,7 +9,7 @@ export async function POST(
   try {
     const data = await collectFormData(request);
     const res = await fetch(
-      `${BACKEND_URL}/survey/${params.id}/submit-answers/`,
+      `${BACKEND_URL}/api/survey/${params.id}/submit-answers/`,
       {
         method: "POST",
         mode: "cors",
