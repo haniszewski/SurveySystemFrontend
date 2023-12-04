@@ -13,7 +13,6 @@ export default function Index() {
     Cookies.remove("token");
     Cookies.remove("email");
     Cookies.remove("username");
-    Cookies.set("isAuthenticated", "false");
     router.push("/");
   }, []);
 
