@@ -10,8 +10,6 @@ import Link from "next/link";
 import { ChartPieIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import { UserContext } from "@/components/_auth/user-context";
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
-
 const columns: GridColDef[] = [
   {
     field: "title",
@@ -65,7 +63,7 @@ const SurveysTable = () => {
   const [rows, setRows] = useState<Row[]>([]);
 
   useEffect(() => {
-    fetch(`${FRONTEND_URL}/surveys/api`, {
+    fetch(`/surveys/api`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

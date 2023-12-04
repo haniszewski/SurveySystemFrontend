@@ -2,7 +2,6 @@ import { collectFormData } from "./helpers";
 import { newSurveySchema } from "@/schemas/survey";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 export async function GET(request: Request) {
   try {
@@ -22,7 +21,7 @@ export async function GET(request: Request) {
       title: row.name,
       startDate: row.start_date,
       endDate: row.end_date,
-      link: `${FRONTEND_URL}/survey/${row.id}`,
+      link: `${request.headers.get("host")}/survey/${row.id}`,
       analysisLink: `/survey/${row.id}/analysis`,
       status: row.status,
     }));
