@@ -42,7 +42,7 @@ const RegisterPage = () => {
       <Form onSubmit={handleRegister}>
         <div className="flex w-full max-w-md flex-col gap-2 rounded bg-white p-8 shadow-md">
           <h2 className="mb-8 text-center text-4xl font-extrabold text-blue-500">
-            Register
+            Zarejestruj się
           </h2>
           {error && (
             <div className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
@@ -63,13 +63,13 @@ const RegisterPage = () => {
               variant="contained"
               className="w-full bg-blue-500 text-white hover:bg-blue-700"
             >
-              Register
+              Zarejestruj się
             </Button>
           </div>
           <div className="mt-4 text-center">
-            <Link href="/login">
+            <Link href="/auth/login">
               <div className="cursor-pointer text-blue-500 hover:underline">
-                Log in
+                Masz już konto? Zaloguj się
               </div>
             </Link>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import Form from "@/components/atoms/form/form";
 import DynamicSubmitButton from "@/components/atoms/form/dynamic-submit-button";
@@ -22,7 +23,7 @@ export default function LoginPage() {
         if (res.ok) {
           console.log("logged in");
           setError("");
-          router.push("/user-panel");
+          router.push("/");
         } else {
           throw new Error("Błędny login lub hasło");
         }
@@ -38,7 +39,7 @@ export default function LoginPage() {
       <Form onSubmit={onSubmit}>
         <div className="flex w-full max-w-md flex-col gap-2 rounded bg-white p-8 shadow-md">
           <h2 className="mb-8 text-center text-4xl font-extrabold text-blue-500">
-            Login
+            Zaloguj się
           </h2>
           {error && (
             <div className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
@@ -50,6 +51,13 @@ export default function LoginPage() {
           <TextFormField name="password" label="Password" type="password" />
           <div className="w-full">
             <DynamicSubmitButton className="w-full" text="Zaloguj" />
+          </div>
+          <div className="mt-4 text-center">
+            <Link href="/auth/register">
+              <div className="cursor-pointer text-blue-500 hover:underline">
+                Załóż konto
+              </div>
+            </Link>
           </div>
         </div>
       </Form>

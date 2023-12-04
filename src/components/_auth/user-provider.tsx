@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { usePathname } from "next/navigation";
 import Loading from "../atoms/common/loading";
 import { UserContext } from "./user-context";
 
@@ -11,21 +12,27 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [username, setUsername] = useState<string>("");
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const pathname = usePathname();
 
-  useEffect(() => {
+  function handleCookies() {
     const token = Cookies.get("token");
     const email = Cookies.get("email");
     const username = Cookies.get("username");
-
-    console.log("provider", token, email, username);
 
     setToken(token || "");
     setEmail(email || "");
     setUsername(username || "");
     setIsAuthenticated(!!token);
     setLoading(false);
-    console.log("provider");
+  }
+
+  useEffect(() => {
+    handleCookies();
   }, []);
+
+  useEffect(() => {
+    handleCookies();
+  }, [pathname]);
 
   return (
     <UserContext.Provider
