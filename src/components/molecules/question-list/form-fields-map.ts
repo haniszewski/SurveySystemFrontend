@@ -8,6 +8,9 @@ const formFieldsMap: Record<QuestionType, React.ElementType> = {
   [QuestionType.TEXT]: TextFormField,
   [QuestionType.SINGLE_CHOICE]: SingleChoiceFormField,
   [QuestionType.MULTI_CHOICE]: MultiChoiceFormField,
+  [QuestionType.DATE]: TextFormField,
+  [QuestionType.DATE_RANGE]: TextFormField,
+  [QuestionType.NUMBER]: TextFormField,
 };
 
 export const createQuestionComponent = (
