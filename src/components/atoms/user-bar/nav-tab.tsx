@@ -1,32 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
 
 import { Tabs, Tab } from "@mui/material";
 import MySurveyButton from "./my-surveys-button";
 import LoginButton from "./login-button";
 import LogoutButton from "./logout-button";
+import { UserContext } from "@/components/_auth/user-context";
 
 const NavTabs = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
+  const { isAuthenticated } = useContext(UserContext);
 
   return (
     <div className="flex space-x-5">
-      {isLoggedIn ? (
+      {isAuthenticated ? (
         <>
           <MySurveyButton />
-          <LogoutButton onClick={handleLogout} />
+          <LogoutButton />
         </>
       ) : (
-        <LoginButton onClick={handleLogin} />
+        <LoginButton />
       )}
     </div>
   );
