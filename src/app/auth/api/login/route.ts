@@ -3,6 +3,7 @@ const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as LoginUser;
+    body.username = body.username || body.email;
     const res = await fetch(`${BACKEND_URL}/api/account/token/`, {
       method: "POST",
       mode: "cors",
@@ -19,11 +20,16 @@ export async function POST(request: Request) {
     const { access } = (await res.json()) as { access: string };
 
     const headers = new Headers();
-    headers.set("Set-Cookie", `token=${access}; `);
-    headers.set("Set-Cookie", `email=${body.email}; `);
-    headers.set("Set-Cookie", `username=${body.username || body.email}; `);
+    headers.append("Set-Cookie", `token=${access}; Path=/`);
+    headers.append("Set-Cookie", `email=${body.email}; Path=/`);
+    headers.append(
+      "Set-Cookie",
+      `username=${body.username || body.email}; Path=/`,
+    );
 
-    return new Response(new Blob(), { status: 200, headers });
+    console.log(headers);
+
+    return new Response("logged in", { status: 200, headers });
   } catch (error: unknown) {
     console.error(error);
     return new Response(String(error), { status: 500 });
