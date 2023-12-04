@@ -1,35 +1,17 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import React from "react";
+import NavTab from "@/components/atoms/user-bar/nav-tab";
 
-import { Tabs, Tab } from "@mui/material";
-import MySurveyButton from "./my-surveys-button";
-import LoginButton from "./login-button";
-import LogoutButton from "./logout-button";
-
-const NavTabs = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
+const TitleBar = ({ title }: { title: string }) => {
   return (
-    <div className="flex space-x-5">
-      {isLoggedIn ? (
-        <>
-          <MySurveyButton />
-          <LogoutButton onClick={handleLogout} />
-        </>
-      ) : (
-        <LoginButton onClick={handleLogin} />
-      )}
+    <div className="flex h-full items-center justify-between bg-sky-700 p-6">
+      <div className="flex flex-shrink-0 items-center text-white">
+        <span className="text-3xl font-semibold tracking-tight">{title}</span>
+      </div>
+      <div className="flex flex-shrink-0 items-center text-white">
+        <NavTab />
+      </div>
     </div>
   );
 };
 
-export default NavTabs;
+export default TitleBar;
