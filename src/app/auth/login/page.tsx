@@ -48,7 +48,7 @@ export default function LoginPage() {
             </div>
           )}
           <TextFormField name="email" label="Email" type="email" />
-          <TextFormField name="password" label="Password" type="password" />
+          <TextFormField name="password" label="Hasło" type="password" />
           <div className="w-full">
             <DynamicSubmitButton className="w-full" text="Zaloguj" />
           </div>

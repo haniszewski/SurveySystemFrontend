@@ -51,12 +51,8 @@ const RegisterPage = () => {
             </div>
           )}
           <TextFormField name="email" label="Email" type="email" />
-          <TextFormField name="password" label="Password" type="password" />
-          <TextFormField
-            name="repeat"
-            label="Repeat password"
-            type="password"
-          />
+          <TextFormField name="password" label="Hasło" type="password" />
+          <TextFormField name="repeat" label="Powtórz hasło" type="password" />
           <div className="w-full">
             <Button
               type="submit"

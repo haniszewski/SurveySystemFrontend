@@ -1,8 +1,6 @@
 "use client";
-import React, { useContext } from "react";
-import Link from "next/link";
+import { useContext } from "react";
 
-import { Tabs, Tab } from "@mui/material";
 import MySurveyButton from "./my-surveys-button";
 import LoginButton from "./login-button";
 import LogoutButton from "./logout-button";
