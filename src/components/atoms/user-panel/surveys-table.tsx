@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DataGrid,
   type GridColDef,
@@ -8,7 +8,7 @@ import {
 } from "@mui/x-data-grid";
 import Link from "next/link";
 import { ChartPieIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
-import { UserContext } from "@/components/_auth/user-context";
+import { useUser } from "@/hooks/useUser";
 
 const columns: GridColDef[] = [
   {
@@ -59,7 +59,7 @@ const columns: GridColDef[] = [
 ];
 
 const SurveysTable = () => {
-  const { token } = useContext(UserContext);
+  const { token } = useUser();
   const [rows, setRows] = useState<Row[]>([]);
 
   useEffect(() => {

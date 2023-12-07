@@ -18,10 +18,8 @@ const NotFound = () => {
 
   return (
     <div className="flex h-full flex-col items-center justify-center bg-white">
-      <h1 className="mb-4 text-4xl font-bold">Survey Not Found</h1>
-      <p className="mb-4 text-lg">
-        The survey with the provided ID does not exist.
-      </p>
+      <h1 className="mb-4 text-4xl font-bold">Nie znaleziono ankiety</h1>
+      <p className="mb-4 text-lg">Ankieta o podanym ID nie istnieje.</p>
       <form onSubmit={handleSubmit} className="flex items-center">
         <input
           type="text"
@@ -35,7 +33,7 @@ const NotFound = () => {
           type="submit"
           className="rounded-md bg-blue-500 px-4 py-2 text-white"
         >
-          Go to Survey
+          Przejdź do ankiety
         </button>
       </form>
     </div>

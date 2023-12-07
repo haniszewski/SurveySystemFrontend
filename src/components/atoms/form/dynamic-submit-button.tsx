@@ -1,7 +1,6 @@
 "use client";
 
 import { useFormContext } from "react-hook-form";
-import { useEffect } from "react";
 import SubmitButton from "@/components/atoms/form/submit-button";
 
 const DynamicSubmitButton = ({
@@ -13,10 +12,6 @@ const DynamicSubmitButton = ({
 }) => {
   const { formState } = useFormContext();
   const { isSubmitting } = formState;
-
-  useEffect(() => {
-    console.log("isSubmitting", isSubmitting);
-  }, [isSubmitting]);
 
   return (
     <SubmitButton

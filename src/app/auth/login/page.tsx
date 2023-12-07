@@ -12,7 +12,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   function onSubmit(formData: unknown) {
-    fetch("/auth/api/login", {
+    return fetch("/auth/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

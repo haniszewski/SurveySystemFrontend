@@ -1,17 +1,15 @@
 "use client";
 
-import { useContext } from "react";
 import { useRouter } from "next/navigation";
 import Form from "../form/form";
-import { UserContext } from "@/components/_auth/user-context";
+import { useUser } from "@/hooks/useUser";
 
 const NewSurveyForm = ({ children }: { children: React.ReactNode }) => {
-  const { token } = useContext(UserContext);
+  const { token } = useUser();
   const router = useRouter();
 
   const submitHandler = (data: unknown) => {
-    console.log(data);
-    fetch("/surveys/api", {
+    return fetch("/surveys/api", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

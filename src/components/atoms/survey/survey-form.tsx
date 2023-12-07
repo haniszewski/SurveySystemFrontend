@@ -17,7 +17,7 @@ const SurveyForm = ({
       answers: data,
     };
 
-    fetch(`/survey/${id}/api`, {
+    return fetch(`/survey/${id}/api`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
