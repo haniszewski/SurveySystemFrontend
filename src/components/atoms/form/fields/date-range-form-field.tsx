@@ -1,5 +1,5 @@
 "use client";
-import { TuiDatePicker } from "nextjs-tui-date-picker";
+import { TuiDateRangePicker } from "nextjs-tui-range-picker";
 //import { DatePicker } from "@mui/lab";
 import { TextField, type TextFieldProps } from "@mui/material";
 import { useFormContext } from "react-hook-form";
@@ -12,17 +12,21 @@ interface DateFormFieldProps extends FormField {
 
 const DateFormField = ({ name, label }: DateFormFieldProps) => {
   // const { register } = useFormContext();
-
+  const options = {
+    language: "en",
+    format: "MM-dd YYYY",
+  };
   return (
     <div>
-      <TuiDatePicker
-        // {...register(name)}
-        handleChange={(date) => {
+      <TuiDateRangePicker
+        handleChange={(date: any) => {
           console.log(date);
         }}
-        date={new Date("2023-01-01")}
-        inputWidth={140}
-        fontSize={16}
+        // options={options}
+        inputWidth={80}
+        containerWidth={200}
+        startpickerDate={new Date("2023-01-02")}
+        endpickerDate={new Date("2023-01-30")}
       />
     </div>
   );

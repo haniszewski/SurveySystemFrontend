@@ -1,12 +1,19 @@
+import Hero from "../components/Hero";
+import Slider from "../components/Slider";
+import Instagram from "../components/Instagram";
+import { SliderData } from "@/components/SliderData";
+import DatePicker from "@/components/atoms/form/fields/date-form-field";
+
 export default function Home() {
   return (
-    <div className=" flex h-full flex-col items-center justify-center bg-sky-100">
-      <h1 className="text-center text-6xl font-bold">
-        Witaj w systemie anonimowych ankiet!
-      </h1>
-      <h3 className="mt-8 text-center text-4xl text-slate-400">
-        {"(Ta strona się zmieni)"}
-      </h3>
+    <div>
+      <Hero
+        heading="Ankiety"
+        message="Witamy w aplikacji do tworzenia anonimowych ankiet internetowych do badań oraz wypełniania ankiet bez konieczności zakładania konta!"
+      />
+      <Slider slides={SliderData} />
+      <DatePicker label="2" name="3" />
+      <Instagram />
     </div>
   );
 }
