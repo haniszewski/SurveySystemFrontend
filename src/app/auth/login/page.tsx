@@ -1,15 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import Form from "@/components/atoms/form/form";
 import DynamicSubmitButton from "@/components/atoms/form/dynamic-submit-button";
+import { useUser } from "@/hooks/useUser";
 
 export default function LoginPage() {
   const [error, setError] = useState("");
   const router = useRouter();
+  const { isAuthenticated } = useUser();
+
+  useEffect(() => {
+    if (isAuthenticated) router.push("/");
+  }, [isAuthenticated]);
 
   function onSubmit(formData: unknown) {
     return fetch("/auth/api/login", {

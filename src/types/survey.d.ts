@@ -1,5 +1,5 @@
 type Survey = {
-  id: number;
+  id: string;
   name: string;
   questions: Question[];
 };
