@@ -9,7 +9,6 @@ const AuthRequiredWrapper = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   useLayoutEffect(() => {
-    console.log("auth", isAuthenticated);
     if (!isAuthenticated) router.push("/");
   }, [isAuthenticated]);
 

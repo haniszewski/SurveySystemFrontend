@@ -27,8 +27,6 @@ export async function POST(request: Request) {
       `username=${body.username || body.email}; Path=/`,
     );
 
-    console.log(headers);
-
     return new Response("logged in", { status: 200, headers });
   } catch (error: unknown) {
     console.error(error);

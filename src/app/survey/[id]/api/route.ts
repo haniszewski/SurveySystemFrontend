@@ -24,7 +24,6 @@ export async function POST(
       throw new Error(await res.text());
     }
 
-    console.log(res.body);
     return new Response(res.body, { status: 200 });
   } catch (error: unknown) {
     console.error(error);

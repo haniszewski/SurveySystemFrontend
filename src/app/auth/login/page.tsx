@@ -27,7 +27,6 @@ export default function LoginPage() {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("logged in");
           setError("");
           router.push("/");
         } else {
@@ -35,7 +34,6 @@ export default function LoginPage() {
         }
       })
       .catch((err: { message: string }) => {
-        console.log(err);
         setError(err.message);
       });
   }

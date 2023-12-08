@@ -24,7 +24,6 @@ const RegisterPage = () => {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("registered");
           setError("");
           router.push("/auth/login");
         } else {
@@ -32,7 +31,6 @@ const RegisterPage = () => {
         }
       })
       .catch((err: { message: string }) => {
-        console.log(err);
         setError(err.message);
       });
   };

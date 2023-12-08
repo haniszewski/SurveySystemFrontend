@@ -24,16 +24,20 @@ export default async function Index({
 
     const data = (await res.json()) as Survey;
 
-    console.log(searchParams.mode);
-
     return (
       <>
         {!searchParams.mode ? (
           <AnalysisSchemaStart />
-        ) : searchParams.mode === "default" ? (
-          "default"
         ) : (
-          "individual"
+          <div className="flex h-full justify-center bg-sky-100 pt-5">
+            <div className="w-2/3">
+              {searchParams.mode === "default" ? (
+                <UpdateAnalysis survey={data} mode="default" />
+              ) : (
+                <UpdateAnalysis survey={data} mode="individual" />
+              )}
+            </div>
+          </div>
         )}
       </>
     );

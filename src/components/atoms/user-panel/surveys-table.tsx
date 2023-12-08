@@ -7,7 +7,11 @@ import {
   type GridRenderCellParams,
 } from "@mui/x-data-grid";
 import Link from "next/link";
-import { ChartPieIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import {
+  ChartPieIcon,
+  ClipboardDocumentListIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/outline";
 import { useUser } from "@/hooks/useUser";
 
 const columns: GridColDef[] = [
@@ -41,7 +45,7 @@ const columns: GridColDef[] = [
   {
     field: "analysisLink",
     headerName: "Akcje",
-    flex: 0.5,
+    flex: 0.7,
     headerClassName: "table-header",
     headerAlign: "center",
     align: "center",
@@ -49,6 +53,9 @@ const columns: GridColDef[] = [
       <div className="flex items-center gap-2">
         <Link href={params.value as string}>
           <ChartPieIcon className="h-6 w-6 text-green-500" />
+        </Link>
+        <Link href={`/analysis/schema/${params.id}`}>
+          <ClipboardDocumentListIcon className="h-6 w-6 text-orange-500" />
         </Link>
         <Link href={`/ankiety/${params.id}`}>
           <PencilSquareIcon className="h-6 w-6 text-blue-500" />

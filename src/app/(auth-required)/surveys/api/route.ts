@@ -14,7 +14,6 @@ export async function GET(request: Request) {
     });
 
     const data = (await res.json()) as RowsApiResponse;
-    console.log(data);
 
     const rows = data.map((row) => ({
       id: row.id,
@@ -44,8 +43,6 @@ export async function POST(request: Request) {
   try {
     const newSurvey = await collectFormData(request);
     newSurveySchema.parse(newSurvey);
-
-    console.dir(newSurvey, { depth: Infinity });
 
     const res = await fetch(`${BACKEND_URL}/api/survey/create/`, {
       method: "POST",
