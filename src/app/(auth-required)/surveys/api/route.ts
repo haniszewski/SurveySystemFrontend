@@ -21,7 +21,7 @@ export async function GET(request: Request) {
       startDate: row.start_date,
       endDate: row.end_date,
       link: `http://${request.headers.get("host")}/survey/${row.id}`,
-      analysisLink: `/analysis/schema/${row.id}`,
+      analysisLink: `/analysis/show/${row.id}`,
       status: row.status,
     }));
 
