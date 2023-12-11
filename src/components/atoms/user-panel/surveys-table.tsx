@@ -12,6 +12,7 @@ import {
   ClipboardDocumentListIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
+import { GridLoader } from "react-spinners";
 import { useUser } from "@/hooks/useUser";
 
 const columns: GridColDef[] = [
@@ -68,6 +69,7 @@ const columns: GridColDef[] = [
 const SurveysTable = () => {
   const { token } = useUser();
   const [rows, setRows] = useState<Row[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch(`/surveys/api`, {
@@ -79,6 +81,7 @@ const SurveysTable = () => {
       .then((res) => res.json())
       .then((data: Row[]) => {
         setRows(data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -87,15 +90,21 @@ const SurveysTable = () => {
 
   return (
     <div className="h-full w-5/6 rounded-lg bg-white p-3">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        disableRowSelectionOnClick
-        sx={{
-          padding: "1px",
-        }}
-        autoPageSize
-      />
+      {!loading ? (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableRowSelectionOnClick
+          sx={{
+            padding: "1px",
+          }}
+          autoPageSize
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center ">
+          <GridLoader color="#3486eb" />
+        </div>
+      )}
     </div>
   );
 };
