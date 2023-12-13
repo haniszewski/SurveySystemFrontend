@@ -32,11 +32,12 @@ export default async function Index() {
     }));
 
     return (
-      <div className="flex h-full w-full flex-col items-center gap-3 bg-sky-100 p-10">
-        <SurveysTable rows={rows} />
-        <div className="flex w-5/6 justify-end">
-          <Link href="/surveys/new">
-            <button className=" rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700">
+      <div className="flex h-full w-full justify-center bg-sky-100 p-10">
+        <div className="flex h-full w-fit max-w-full flex-col items-center gap-3 ">
+          <SurveysTable rows={rows} />
+
+          <Link href="/surveys/new" className="w-full self-end lg:w-auto">
+            <button className="w-full rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700">
               Dodaj ankietę
             </button>
           </Link>

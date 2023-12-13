@@ -22,7 +22,7 @@ const Survey = ({
         <div>
           <QuestionList questions={questions} />
         </div>
-        <div className="flex justify-end">
+        <div className="flex lg:justify-end">
           <DynamicSubmitButton text="Prześlij" />
         </div>
       </div>

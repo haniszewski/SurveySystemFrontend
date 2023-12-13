@@ -18,25 +18,25 @@ const columns: GridColDef[] = [
   {
     field: "title",
     headerName: "Nazwa",
-    flex: 2,
+    width: 300,
     headerClassName: "table-header",
   },
   {
     field: "startDate",
     headerName: "Data rozpoczęcia",
-    flex: 1,
+    width: 150,
     headerClassName: "table-header",
   },
   {
     field: "endDate",
     headerName: "Data zakończenia",
-    flex: 1,
+    width: 150,
     headerClassName: "table-header",
   },
   {
     field: "link",
     headerName: "Link do ankiety",
-    flex: 2,
+    width: 300,
     headerClassName: "table-header",
     renderCell: (params: GridRenderCellParams) => (
       <Link href={params.value as string}>{params.value}</Link>
@@ -45,7 +45,7 @@ const columns: GridColDef[] = [
   {
     field: "analysisLink",
     headerName: "Akcje",
-    flex: 0.7,
+    width: 100,
     headerClassName: "table-header",
     headerAlign: "center",
     align: "center",
@@ -67,7 +67,7 @@ const columns: GridColDef[] = [
 
 const SurveysTable = ({ rows }: { rows: Row[] }) => {
   return (
-    <div className="h-full w-5/6 rounded-lg bg-white p-3">
+    <div className="h-full max-w-full rounded-lg bg-white p-3">
       <Suspense
         fallback={
           <div className="flex h-full w-full items-center justify-center ">

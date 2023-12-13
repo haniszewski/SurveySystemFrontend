@@ -22,8 +22,8 @@ export default async function SurveyPage({
     const data = (await res.json()) as Survey;
 
     return (
-      <div className="flex min-h-full flex-col items-center bg-sky-50 pt-10">
-        <div className="w-2/3">
+      <div className="flex min-h-full flex-col items-center bg-sky-50 p-10">
+        <div className="lg:w-2/3">
           <Survey id={params.id} questions={data.questions} name={data.name} />
         </div>
       </div>

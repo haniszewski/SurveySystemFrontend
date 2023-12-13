@@ -30,7 +30,7 @@ export default async function Index({
           <AnalysisSchemaStart />
         ) : (
           <div className="flex h-full justify-center bg-sky-100 pt-5">
-            <div className="w-2/3">
+            <div className="lg:w-2/3">
               {searchParams.mode === "default" ? (
                 <UpdateAnalysis survey={data} mode="default" />
               ) : (

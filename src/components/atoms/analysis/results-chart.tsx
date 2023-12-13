@@ -47,16 +47,20 @@ const ResultsChart = ({
       },
       options: {
         responsive: true,
+        aspectRatio: 16 / 9,
         maintainAspectRatio: false,
-        scales: {
-          y: {
-            ticks: {
-              callback: (value) => {
-                return parseInt(String(value)) === value ? value : null;
-              },
-            },
-          },
-        },
+        scales:
+          type == "bar"
+            ? {
+                y: {
+                  ticks: {
+                    callback: (value) => {
+                      return parseInt(String(value)) === value ? value : null;
+                    },
+                  },
+                },
+              }
+            : undefined,
       },
     });
 
