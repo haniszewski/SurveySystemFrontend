@@ -18,7 +18,7 @@ const AnalysisRunning = () => {
   return (
     <div className="flex h-full items-center justify-center bg-sky-100">
       <div className="flex flex-col items-center gap-20">
-        <div className="mt-4 text-3xl font-bold text-gray-900">
+        <div className="mt-4 text-center text-3xl font-bold text-gray-900">
           Trwa analizowanie danych
         </div>
         {randomSpinners[Math.floor(Math.random() * randomSpinners.length)]}
