@@ -1,36 +1,4 @@
-"use client";
-
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useUser } from "@/hooks/useUser";
-
-const ResultsView = () => {
-  const { surveyId } = useParams<{ surveyId: string }>();
-  const { token } = useUser();
-  const [questions, setQuestions] = useState<AnalysisData>([]);
-
-  useEffect(() => {
-    (async () => {
-      await fetch(`/analysis/run/${surveyId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const res = await fetch(`/analysis/show/${surveyId}/api`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = (await res.json()) as AnalysisData;
-      setQuestions(data);
-    })().catch((err) => console.log(err));
-  }, []);
-
+const ResultsView = ({ questions }: { questions: AnalysisData }) => {
   return (
     <div className="flex flex-col gap-4">
       {questions.length > 0 &&

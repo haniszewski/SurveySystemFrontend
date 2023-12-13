@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   DataGrid,
   type GridColDef,
@@ -13,7 +12,7 @@ import {
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 import { GridLoader } from "react-spinners";
-import { useUser } from "@/hooks/useUser";
+import { Suspense } from "react";
 
 const columns: GridColDef[] = [
   {
@@ -66,31 +65,16 @@ const columns: GridColDef[] = [
   },
 ];
 
-const SurveysTable = () => {
-  const { token } = useUser();
-  const [rows, setRows] = useState<Row[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    fetch(`/surveys/api`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data: Row[]) => {
-        setRows(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+const SurveysTable = ({ rows }: { rows: Row[] }) => {
   return (
     <div className="h-full w-5/6 rounded-lg bg-white p-3">
-      {!loading ? (
+      <Suspense
+        fallback={
+          <div className="flex h-full w-full items-center justify-center ">
+            <GridLoader color="#3486eb" />
+          </div>
+        }
+      >
         <DataGrid
           rows={rows}
           columns={columns}
@@ -100,11 +84,7 @@ const SurveysTable = () => {
           }}
           autoPageSize
         />
-      ) : (
-        <div className="flex h-full w-full items-center justify-center ">
-          <GridLoader color="#3486eb" />
-        </div>
-      )}
+      </Suspense>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export default async function Index({
   };
 }) {
   try {
-    const res = await fetch(`${BACKEND_URL}/api/survey/${params.surveyId}`);
+    const res = await fetch(`${BACKEND_URL}/api/survey/${params.surveyId}/`);
 
     if (!res.ok) {
       throw new Error("Survey not found");

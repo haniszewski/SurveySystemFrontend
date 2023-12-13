@@ -5,16 +5,19 @@ export async function POST(
   { params }: { params: { surveyId: string } },
 ) {
   try {
-    const res = await fetch(`${BACKEND_URL}/api/surveys/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: request.headers.get("Authorization") || "",
+    const res = await fetch(
+      `${BACKEND_URL}/api/surveys/${params.surveyId}/analyze/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: request.headers.get("Authorization") || "",
+        },
+        body: JSON.stringify({
+          survey_id: params.surveyId,
+        }),
       },
-      body: JSON.stringify({
-        survey_id: params.surveyId,
-      }),
-    });
+    );
 
     if (!res.ok) {
       throw new Error(await res.text());
