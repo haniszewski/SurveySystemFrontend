@@ -18,12 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-screen bg-white text-black`}>
+      <body className={`${inter.className} h-screen bg-sky-100 text-black`}>
         <UserProvider>
           <nav className="absolute left-0 top-0 h-20 w-full">
             <TitleBar title={"Ankiety"} />
           </nav>
-          <main className="h-screen pt-20">{children}</main>
+          <main className="h-full pt-20">{children}</main>
         </UserProvider>
       </body>
     </html>

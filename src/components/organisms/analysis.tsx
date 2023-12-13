@@ -38,6 +38,7 @@ export default async function Analysis({ surveyId }: { surveyId: string }) {
     }
 
     const apiData = (await res.json()) as AnalysisApiResponse;
+    console.dir(apiData, { depth: 20 });
     const processedData = collectApiData(apiData);
 
     return <ResultsView questions={processedData} />;

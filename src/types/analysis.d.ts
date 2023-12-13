@@ -14,4 +14,4 @@ type AnalysisData = {
     labels: string[];
     data: number[];
   };
-}[];
+};
