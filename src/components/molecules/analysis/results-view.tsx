@@ -1,4 +1,4 @@
-import QuestionResults from "../molecules/analysis/question-results";
+import QuestionResults from "./question-results";
 
 const ResultsView = ({ questions }: { questions: AnalysisData[] }) => {
   return (

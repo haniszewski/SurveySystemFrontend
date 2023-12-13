@@ -9,7 +9,7 @@ const QuestionResults = ({ analysis }: { analysis: AnalysisData }) => {
   return (
     <div className="flex w-full flex-col items-center justify-between rounded-md bg-white p-5 shadow">
       <h3 className="mb-5 text-2xl font-bold">{question}</h3>
-      <div className="flex h-96 w-full justify-center">
+      <div className="flex h-fit w-full justify-center md:h-52 lg:h-96">
         <ResultsChart labels={labels} data={data} type="bar" />
       </div>
     </div>

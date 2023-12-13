@@ -1,6 +1,6 @@
 "use client";
 
-import Chart from "chart.js/auto";
+import { Chart } from "chart.js/auto";
 
 import { useEffect, useRef } from "react";
 
@@ -48,7 +48,6 @@ const ResultsChart = ({
       options: {
         responsive: true,
         aspectRatio: 16 / 9,
-        maintainAspectRatio: false,
         scales:
           type == "bar"
             ? {

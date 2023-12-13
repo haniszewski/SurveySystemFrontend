@@ -19,13 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} h-screen w-full overflow-x-hidden bg-white text-black`}
+        className={`${inter.className} h-screen w-full overflow-x-clip bg-white text-black`}
       >
         <UserProvider>
-          <nav className="absolute left-0 top-0 h-20 w-full">
+          <nav className="absolute left-0 top-0 h-20 w-full overflow-clip">
             <TitleBar title={"Ankiety"} />
           </nav>
-          <main className="h-full pt-20">{children}</main>
+          <main className="h-full overflow-auto bg-sky-100 pt-20">
+            {children}
+          </main>
         </UserProvider>
       </body>
     </html>

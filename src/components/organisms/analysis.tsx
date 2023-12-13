@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import ResultsView from "./results-view";
+import ResultsView from "../molecules/analysis/results-view";
 import { collectApiData } from "@/app/(auth-required)/analysis/show/[surveyId]/api/helpers";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:8000";
@@ -38,7 +38,6 @@ export default async function Analysis({ surveyId }: { surveyId: string }) {
     }
 
     const apiData = (await res.json()) as AnalysisApiResponse;
-    console.dir(apiData, { depth: 20 });
     const processedData = collectApiData(apiData);
 
     return <ResultsView questions={processedData} />;
