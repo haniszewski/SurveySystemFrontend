@@ -21,7 +21,7 @@ const SingleQuestionAnalysisSchema = ({ question }: { question: Question }) => {
 
   useEffect(() => {
     register(createName("order"), { value: question.order });
-    register(createName("type"), { value: "percentage" });
+    register(createName("type"), { value: "pie" });
     register(createName("display"), { required: "To pole jest wymagane" });
     register(createName("show_total"), { value: true });
   }, []);

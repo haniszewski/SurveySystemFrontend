@@ -5,11 +5,12 @@ function mapAnswers(answers: { answer: string; result: number }[]) {
   return { labels, data };
 }
 
-export function collectApiData(data: AnalysisApiResponse) {
+export function collectApiData(data: AnalysisApiResponse): AnalysisData[] {
   const questions = data.analysis_result_json;
 
   return questions.map((question) => ({
     question: question.question.text,
+    type: question.display === "percentage" ? "pie" : "bar",
     answers: mapAnswers(question.answers),
   }));
 }

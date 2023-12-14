@@ -51,7 +51,7 @@ const NewSurveyForm = ({ children }: { children: React.ReactNode }) => {
         },
       })
         .then(() => router.push(`/user-panel`))
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     } catch (err) {
       const surveyData = data as NewSurveySchema;
       if (
