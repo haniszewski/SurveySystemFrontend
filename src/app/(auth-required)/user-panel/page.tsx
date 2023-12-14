@@ -8,6 +8,7 @@ const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:8000";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const runtime = "nodejs";
+export const fetchCache = "force-no-store";
 
 export default async function Index() {
   try {

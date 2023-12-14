@@ -7,14 +7,15 @@ const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:8000";
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://127.0.0.1:3000";
 
 export default async function Analysis({ surveyId }: { surveyId: string }) {
+  const cookieStore = cookies();
   try {
     const firstRes = await fetch(`${FRONTEND_URL}/analysis/run/${surveyId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookies().get("token")?.value}`,
+        Authorization: `Bearer ${cookieStore.get("token")?.value}`,
       },
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     if (!firstRes.ok) {
@@ -27,9 +28,9 @@ export default async function Analysis({ surveyId }: { surveyId: string }) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${cookies().get("token")?.value}`,
+          Authorization: `Bearer ${cookieStore.get("token")?.value}`,
         },
-        cache: "no-cache",
+        cache: "no-store",
       },
     );
 

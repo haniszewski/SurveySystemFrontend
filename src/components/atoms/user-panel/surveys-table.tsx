@@ -9,11 +9,12 @@ import Link from "next/link";
 import {
   ChartPieIcon,
   ClipboardDocumentListIcon,
-  PencilSquareIcon,
+  // PencilSquareIcon,
 } from "@heroicons/react/24/outline";
 import { GridLoader } from "react-spinners";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Tooltip } from "react-tooltip";
+import { useRouter } from "next/navigation";
 
 const columns: GridColDef[] = [
   {
@@ -66,19 +67,25 @@ const columns: GridColDef[] = [
         >
           <ClipboardDocumentListIcon className="h-6 w-6 text-orange-500" />
         </Link>
-        <Link
+        {/* <Link
           data-tooltip-id="user-panel-tooltip"
           data-tooltip-content="Edytuj ankietę"
           href={`/ankiety/${params.id}`}
         >
           <PencilSquareIcon className="h-6 w-6 text-blue-500" />
-        </Link>
+        </Link> */}
       </div>
     ),
   },
 ];
 
 const SurveysTable = ({ rows }: { rows: Row[] }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.refresh();
+  }, []);
+
   return (
     <div className="h-full max-w-full rounded-lg bg-white p-3">
       <Suspense
