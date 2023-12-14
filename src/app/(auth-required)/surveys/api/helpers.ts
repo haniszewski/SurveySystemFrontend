@@ -1,12 +1,11 @@
 import { type z } from "zod";
-import { type formDataSchema, type newSurveySchema } from "@/schemas/survey";
+import { type newSurveySchema } from "@/schemas/survey";
 
 type NewSurvey = z.infer<typeof newSurveySchema>;
-type FormData = z.infer<typeof formDataSchema>;
 
 export async function collectFormData(request: Request): Promise<NewSurvey> {
   try {
-    const body = (await request.json()) as FormData;
+    const body = (await request.json()) as NewSurvey;
     const questions = body.questions
       .filter((question) => !!question)
       .map((question) => {
@@ -19,9 +18,6 @@ export async function collectFormData(request: Request): Promise<NewSurvey> {
 
     const newSurvey: NewSurvey = {
       ...body,
-      name: "New Survey",
-      start_date: "2023-01-01",
-      end_date: "2025-01-01",
       questions,
     };
 
