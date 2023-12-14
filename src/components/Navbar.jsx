@@ -1,29 +1,38 @@
 "use client";
+import { usePathname } from 'next/navigation'
+
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import NavTabs from "./atoms/user-bar/nav-tab";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [color, setColor] = useState("transparent");
+  const [color, setColor] = useState("black");
   const [textColor, setTextColor] = useState("white");
 
+  const pathname = usePathname()
   const handleNav = () => {
     setNav(!nav);
   };
 
-  useEffect(() => {
-    const changeColor = () => {
-      if (window.scrollY >= 90) {
-        setColor("#ffffff");
-        setTextColor("#000000");
-      } else {
-        setColor("transparent");
-        setTextColor("#ffffff");
-      }
-    };
-    window.addEventListener("scroll", changeColor);
-  }, []);
+  // useEffect(() => {
+  //   // const changeColor = () => {
+  //   //   if (window.scrollY >= 90) {
+  //   //     setColor("#ffffff");
+  //   //     setTextColor("#000000");
+  //   //   } else {
+  //   //     setColor("transparent");
+  //   //     setTextColor("#ffffff");
+  //   //   }
+  //   //   if (pathname ==="/auth/login"){
+  //   //     setColor('#000000');
+  //   //     setTextColor("#ffffff");
+
+  //   //   }
+  //   // };
+  //   window.addEventListener("scroll", changeColor);
+  // }, []);
 
   return (
     <div
@@ -46,11 +55,10 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <li className="p-4">
-            <Link href="/auth/login">
-              {" "}
-              <span className="nav-text">Zaloguj się</span>
-            </Link>
+          <li className="p-4">   
+              <span className="nav-text">
+                <NavTabs/>
+              </span>
           </li>
           <li className="p-4">
             <Link href="/contact">
