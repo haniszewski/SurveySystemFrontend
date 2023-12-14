@@ -26,7 +26,7 @@ export default async function Index({
 
     return (
       <>
-        {!searchParams.mode ? (
+        {/* {!searchParams.mode ? (
           <AnalysisSchemaStart />
         ) : (
           <div className="flex h-full justify-center bg-sky-100 pt-5">
@@ -38,7 +38,12 @@ export default async function Index({
               )}
             </div>
           </div>
-        )}
+        )} */}
+        <div className="flex h-full justify-center bg-sky-100 pt-5">
+          <div className="lg:w-2/3">
+            <UpdateAnalysis survey={data} mode="individual" />
+          </div>
+        </div>
       </>
     );
   } catch (e) {
