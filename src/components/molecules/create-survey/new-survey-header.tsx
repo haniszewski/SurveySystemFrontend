@@ -8,15 +8,22 @@ import SaveButton from "@/components/atoms/new-survey/save-button";
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
 
 const NewSurveyHeader = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const { getValues } = useFormContext();
+  const [isEditing, setIsEditing] = useState(true);
+  const { getValues, trigger, formState } = useFormContext();
+  // needed for formState to update
+  // eslint-disable-next-line
+  const { errors } = formState;
 
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
   const handleSaveClick = () => {
-    setIsEditing(false);
+    trigger(["name", "start_date", "end_date"])
+      .then((result) => {
+        if (result) setIsEditing(false);
+      })
+      .catch(() => {});
   };
 
   const isValidDate = (dateString: string | undefined) => {
@@ -58,6 +65,7 @@ const NewSurveyHeader = () => {
                   name="start_date"
                   type="date"
                   className="w-full rounded-md border px-3 py-2 focus:border-blue-500 focus:outline-none"
+                  required
                 />
               </div>
               <div className="mb-4 w-full rounded-lg bg-white p-6 text-left shadow">
@@ -71,6 +79,7 @@ const NewSurveyHeader = () => {
                   name="end_date"
                   type="date"
                   className="w-full rounded-md border px-3 py-2 focus:border-blue-500 focus:outline-none"
+                  required
                 />
               </div>
             </div>
