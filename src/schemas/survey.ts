@@ -36,7 +36,3 @@ export const newSurveySchema = z.object({
   end_date: z.string(),
   questions: questionSchema.array(),
 });
-
-export const formDataSchema = z.object({
-  questions: z.array(questionSchema),
-});

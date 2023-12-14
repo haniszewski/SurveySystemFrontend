@@ -1,3 +1,5 @@
+"use client";
+
 import { RiseLoader } from "react-spinners";
 
 const Loading = () => {

@@ -1,17 +1,17 @@
 "use client";
 import { useState } from "react";
-import Button from "@mui/material/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import TextFormField from "@/components/atoms/form/fields/text-form-field";
 import Form from "@/components/atoms/form/form";
+import DynamicSubmitButton from "@/components/atoms/form/dynamic-submit-button";
 
 const RegisterPage = () => {
   const [error, setError] = useState("");
   const router = useRouter();
   const handleRegister = (values: unknown) => {
     const data = values as CreateUser;
-    fetch("/auth/api/register", {
+    return fetch("/auth/api/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,6 @@ const RegisterPage = () => {
     })
       .then((res) => {
         if (res.ok) {
-          console.log("registered");
           setError("");
           router.push("/auth/login");
         } else {
@@ -32,7 +31,6 @@ const RegisterPage = () => {
         }
       })
       .catch((err: { message: string }) => {
-        console.log(err);
         setError(err.message);
       });
   };
@@ -54,13 +52,10 @@ const RegisterPage = () => {
           <TextFormField name="password" label="Hasło" type="password" />
           <TextFormField name="repeat" label="Powtórz hasło" type="password" />
           <div className="w-full">
-            <Button
-              type="submit"
-              variant="contained"
+            <DynamicSubmitButton
+              text="Zarejestruj się"
               className="w-full bg-blue-500 text-white hover:bg-blue-700"
-            >
-              Zarejestruj się
-            </Button>
+            />
           </div>
           <div className="mt-4 text-center">
             <Link href="/auth/login">

@@ -5,8 +5,9 @@ import { useFormContext } from "react-hook-form";
 
 interface TextFieldProps extends FormField {
   variant?: TextFieldVariants;
-  type?: "text" | "number" | "email" | "password";
-  defaultValue?: string;
+  type?: "text" | "number" | "email" | "password" | "date";
+  defaultValue?: string | Date;
+  className?: string;
 }
 
 const TextFormField = ({

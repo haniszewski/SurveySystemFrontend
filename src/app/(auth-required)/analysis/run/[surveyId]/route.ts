@@ -1,22 +1,21 @@
-import { collectFormData } from "./helpers";
-
 const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:8000";
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: { surveyId: string } },
 ) {
   try {
-    const data = await collectFormData(request);
     const res = await fetch(
-      `${BACKEND_URL}/api/survey/${params.id}/submit-answers/`,
+      `${BACKEND_URL}/api/surveys/${params.surveyId}/analyze/`,
       {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json",
+          Authorization: request.headers.get("Authorization") || "",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          survey_id: params.surveyId,
+        }),
       },
     );
 

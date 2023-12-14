@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:8000";
+const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:8000";
 
 export async function POST(request: Request) {
   try {
@@ -26,8 +26,6 @@ export async function POST(request: Request) {
       "Set-Cookie",
       `username=${body.username || body.email}; Path=/`,
     );
-
-    console.log(headers);
 
     return new Response("logged in", { status: 200, headers });
   } catch (error: unknown) {

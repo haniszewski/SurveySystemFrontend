@@ -1,4 +1,4 @@
-import SubmitButton from "../atoms/form/submit-button";
+import DynamicSubmitButton from "../atoms/form/dynamic-submit-button";
 import SurveyForm from "../atoms/survey/survey-form";
 import SurveyHeader from "../atoms/survey/survey-header";
 import QuestionList from "../molecules/question-list/question-list";
@@ -22,8 +22,8 @@ const Survey = ({
         <div>
           <QuestionList questions={questions} />
         </div>
-        <div className="flex justify-end">
-          <SubmitButton text="Prześlij" />
+        <div className="flex lg:justify-end">
+          <DynamicSubmitButton text="Prześlij" />
         </div>
       </div>
     </SurveyForm>

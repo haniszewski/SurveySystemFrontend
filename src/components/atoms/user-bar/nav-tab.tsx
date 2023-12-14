@@ -1,13 +1,12 @@
 "use client";
-import { useContext } from "react";
 
 import MySurveyButton from "./my-surveys-button";
 import LoginButton from "./login-button";
 import LogoutButton from "./logout-button";
-import { UserContext } from "@/components/_auth/user-context";
+import { useUser } from "@/hooks/useUser";
 
 const NavTabs = () => {
-  const { isAuthenticated } = useContext(UserContext);
+  const { isAuthenticated } = useUser();
 
   return (
     <div className="flex space-x-5">

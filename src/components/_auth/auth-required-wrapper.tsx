@@ -1,15 +1,14 @@
 "use client";
 
-import { useContext, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
-import { UserContext } from "./user-context";
+import { useUser } from "@/hooks/useUser";
 
 const AuthRequiredWrapper = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useContext(UserContext);
+  const { isAuthenticated } = useUser();
   const router = useRouter();
 
   useLayoutEffect(() => {
-    console.log("auth", isAuthenticated);
     if (!isAuthenticated) router.push("/");
   }, [isAuthenticated]);
 
