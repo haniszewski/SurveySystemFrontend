@@ -2,6 +2,7 @@
 
 import { useFormContext } from "react-hook-form";
 import SubmitButton from "@/components/atoms/form/submit-button";
+import {useRouter} from "next/navigation"
 
 const DynamicSubmitButton = ({
   className,
@@ -10,6 +11,7 @@ const DynamicSubmitButton = ({
   className?: string;
   text?: string;
 }) => {
+  const router = useRouter()
   const { formState } = useFormContext();
   const { isSubmitting } = formState;
 
@@ -18,6 +20,7 @@ const DynamicSubmitButton = ({
       text={text}
       className={className}
       isSubmitting={isSubmitting}
+      onClick={()=>router.push("/surveys/thanks")}
     />
   );
 };
