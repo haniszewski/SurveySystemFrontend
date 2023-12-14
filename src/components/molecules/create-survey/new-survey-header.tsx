@@ -92,28 +92,37 @@ const NewSurveyHeader = () => {
                   <span className="font-bold">Rozpoczęcie:</span>{" "}
                   <span className="hidden md:inline">
                     {getValues("start_date") &&
-                    isValidDate(getValues("start_date"))
-                      ? dayjs(getValues("start_date")).format("YYYY-MM-DD")
+                    isValidDate(getValues("start_date") as string)
+                      ? dayjs(getValues("start_date") as string).format(
+                          "YYYY-MM-DD",
+                        )
                       : "Data niepodana"}
                   </span>
                   <span className="block md:hidden">
                     {getValues("start_date") &&
-                    isValidDate(getValues("start_date"))
-                      ? dayjs(getValues("start_date")).format("YYYY-MM-DD")
+                    isValidDate(getValues("start_date") as string)
+                      ? dayjs(getValues("start_date") as string).format(
+                          "YYYY-MM-DD",
+                        )
                       : "Data niepodana"}
                   </span>
                 </p>
                 <p className="mt-2 text-sm text-black">
                   <span className="font-bold">Zakończenie:</span>{" "}
                   <span className="hidden md:inline">
-                    {getValues("end_date") && isValidDate(getValues("end_date"))
-                      ? dayjs(getValues("end_date")).format("YYYY-MM-DD")
+                    {getValues("end_date") &&
+                    isValidDate(getValues("end_date") as string)
+                      ? dayjs(getValues("end_date") as string).format(
+                          "YYYY-MM-DD",
+                        )
                       : "Data niepodana"}
                   </span>
                   <span className="block md:hidden">
                     {getValues("start_date") &&
-                    isValidDate(getValues("end_date"))
-                      ? dayjs(getValues("end_date")).format("YYYY-MM-DD")
+                    isValidDate(getValues("end_date") as string)
+                      ? dayjs(getValues("end_date") as string).format(
+                          "YYYY-MM-DD",
+                        )
                       : "Data niepodana"}
                   </span>
                 </p>
