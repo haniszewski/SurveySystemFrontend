@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import UpdateAnalysis from "@/components/organisms/update-analysis";
 // import AnalysisSchemaStart from "@/components/molecules/analysis/analysis-schema-start";
 
@@ -15,7 +16,13 @@ export default async function Index({
   };
 }) {
   try {
-    const res = await fetch(`${BACKEND_URL}/api/survey/${params.surveyId}/`);
+    const res = await fetch(`${BACKEND_URL}/api/survey/${params.surveyId}/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${cookies().get("token")?.value}`,
+      },
+    });
 
     if (!res.ok) {
       throw new Error("Survey not found");

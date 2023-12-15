@@ -10,7 +10,7 @@ type Row = {
 type RowsApiResponse = Array<{
   id: string;
   name: string;
-  status: number;
+  status: 1 | 2 | 3 | 4;
   start_date: string;
   end_date: string;
 }>;
