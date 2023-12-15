@@ -1,5 +1,5 @@
 "use client";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -11,7 +11,7 @@ const Navbar = () => {
   const [color, setColor] = useState("black");
   const [textColor, setTextColor] = useState("white");
 
-  const pathname = usePathname()
+  const pathname = usePathname();
   const handleNav = () => {
     setNav(!nav);
   };
@@ -49,23 +49,23 @@ const Navbar = () => {
           </h1>
         </Link>
         <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
-          <li className="p-4 ">
+          {/* <li className="p-4 ">
             <Link href="/">
               <span className="nav-text">Strona główna</span>
             </Link>
-          </li>
+          </li> */}
 
-          <li className="p-4">   
-              <span className="nav-text">
-                <NavTabs/>
-              </span>
-          </li>
           <li className="p-4">
+            <span className="nav-text">
+              <NavTabs />
+            </span>
+          </li>
+          {/* <li className="p-4">
             <Link href="/contact">
               {" "}
               <span className="nav-text">Kontakt</span>
             </Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Mobile Button */}

@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import TitleBar from "@/components/atoms/title-bar";
+// import TitleBar from "@/components/atoms/title-bar";
 import UserProvider from "@/components/_auth/user-provider";
 import Navbar from "@/components/Navbar";
 

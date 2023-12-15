@@ -1,8 +1,8 @@
 import Hero from "../components/Hero";
-import Slider from "../components/Slider";
-import Instagram from "../components/Instagram";
-import { SliderData } from "@/components/SliderData";
-import DatePicker from "@/components/atoms/form/fields/date-form-field";
+// import Slider from "../components/Slider";
+// import Instagram from "../components/Instagram";
+// import { SliderData } from "@/components/SliderData";
+// import DatePicker from "@/components/atoms/form/fields/date-form-field";
 
 export default function Home() {
   return (
@@ -11,8 +11,8 @@ export default function Home() {
         heading="Ankiety"
         message="Witamy w aplikacji do tworzenia anonimowych ankiet internetowych do badań oraz wypełniania ankiet bez konieczności zakładania konta!"
       />
-      <Slider slides={SliderData} />
-      <Instagram />
+      {/* <Slider slides={SliderData} />
+      <Instagram /> */}
     </div>
   );
 }
