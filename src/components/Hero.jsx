@@ -1,10 +1,11 @@
 "use client";
+
 import React from "react";
 import { Link } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useUser } from "@/hooks/useUser";
 
 const Hero = ({ heading, message }) => {
-  const router = useRouter();
+  const { isAuthenticated } = useUser();
   return (
     <div className="custom-img flex h-screen items-center justify-center bg-cover bg-fixed bg-center">
       {/* Overlay */}
@@ -13,12 +14,11 @@ const Hero = ({ heading, message }) => {
         <h2 className="text-5xl font-bold">{heading}</h2>
         <p className="py-5 text-xl">{message}</p>
 
-        <button
-          onClick={() => router.push("/auth/register")}
-          className="border px-8 py-2"
-        >
-          Zarejestruj się
-        </button>
+        {!isAuthenticated && (
+          <Link href="/auth/register" className="border px-8 py-2">
+            Zarejestruj się
+          </Link>
+        )}
       </div>
     </div>
   );
