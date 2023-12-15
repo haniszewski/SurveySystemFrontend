@@ -45,6 +45,28 @@ const columns: GridColDef[] = [
     ),
   },
   {
+    field: "status",
+    headerName: "Status",
+    width: 150,
+    headerClassName: "table-header",
+    renderCell: (params: GridRenderCellParams) => (
+      <div className="flex items-center justify-center">
+        <div
+          className={`h-3 w-3 rounded-full ${
+            params.value === "Utworzona"
+              ? "bg-gray-400"
+              : params.value === "Przed rozpoczęciem"
+              ? "bg-yellow-500"
+              : params.value === "W trakcie"
+              ? "bg-green-500"
+              : "bg-red-500"
+          }`}
+        />
+        <span className="ml-2">{params.value}</span>
+      </div>
+    ),
+  },
+  {
     field: "analysisLink",
     headerName: "Akcje",
     width: 100,

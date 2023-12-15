@@ -24,7 +24,7 @@ const SurveyForm = ({
       },
       body: JSON.stringify(payload),
     })
-      .then(() => router.push(`/dziekujemy`))
+      .then(() => router.push(`/thanks`))
       .catch((err) => {
         console.error(err);
       });

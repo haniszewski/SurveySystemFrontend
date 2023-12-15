@@ -22,6 +22,15 @@ export default async function Index() {
 
     const data = (await res.json()) as RowsApiResponse;
 
+    const statuses = {
+      1: "Utworzona",
+      2: "Przed rozpoczęciem",
+      3: "W trakcie",
+      4: "Zakończona",
+    };
+
+    console.log(data);
+
     const rows = data.map((row) => ({
       id: row.id,
       title: row.name,
@@ -29,7 +38,7 @@ export default async function Index() {
       endDate: row.end_date,
       link: `http://${headers().get("host")}/survey/${row.id}`,
       analysisLink: `/analysis/show/${row.id}`,
-      status: String(row.status),
+      status: statuses[row.status],
     }));
 
     return (
