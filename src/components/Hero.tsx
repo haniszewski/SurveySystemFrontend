@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { Link } from "next/navigation";
+import Link from "next/link";
 import { useUser } from "@/hooks/useUser";
 
-const Hero = ({ heading, message }) => {
+const Hero = ({ heading, message }: { heading: string; message: string }) => {
   const { isAuthenticated } = useUser();
   return (
     <div className="custom-img flex h-screen items-center justify-center bg-cover bg-fixed bg-center">
