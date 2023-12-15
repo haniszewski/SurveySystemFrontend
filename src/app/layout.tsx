@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} h-screen w-full overflow-x-clip bg-white text-black`}
+        className={`${inter.className} h-screen w-full overflow-x-clip bg-sky-100 text-black`}
       >
         <UserProvider>
           {/* <nav className="absolute left-0 top-0 h-20 w-full">

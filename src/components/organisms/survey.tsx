@@ -17,7 +17,7 @@ const Survey = ({
       <div className="flex w-full flex-col gap-5">
         <SurveyHeader
           title={`Survey ${name}`}
-          description="Please fill out the survey"
+          description="Proszę wypełnij ankietę"
         />
         <div>
           <QuestionList questions={questions} />
