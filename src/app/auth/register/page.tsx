@@ -55,6 +55,7 @@ const RegisterPage = () => {
             <DynamicSubmitButton
               text="Zarejestruj się"
               className="w-full bg-blue-500 text-white hover:bg-blue-700"
+              isLogin
             />
           </div>
           <div className="mt-4 text-center">

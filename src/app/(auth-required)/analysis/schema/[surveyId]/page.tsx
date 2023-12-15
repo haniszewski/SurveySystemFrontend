@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation";
 import UpdateAnalysis from "@/components/organisms/update-analysis";
-import AnalysisSchemaStart from "@/components/molecules/analysis/analysis-schema-start";
+// import AnalysisSchemaStart from "@/components/molecules/analysis/analysis-schema-start";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://127.0.0.1:8000";
 
 export default async function Index({
-  params,
-  searchParams,
+  params, // searchParams,
 }: {
   params: {
     surveyId: string;

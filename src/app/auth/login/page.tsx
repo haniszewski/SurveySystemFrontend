@@ -54,7 +54,7 @@ export default function LoginPage() {
           <TextFormField name="email" label="Email" type="email" />
           <TextFormField name="password" label="Hasło" type="password" />
           <div className="w-full">
-            <DynamicSubmitButton className="w-full" text="Zaloguj" />
+            <DynamicSubmitButton isLogin className="w-full" text="Zaloguj" />
           </div>
           <div className="mt-4 text-center">
             <Link href="/auth/register">
