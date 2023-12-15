@@ -1,8 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import TitleBar from "@/components/atoms/title-bar";
+// import TitleBar from "@/components/atoms/title-bar";
 import UserProvider from "@/components/_auth/user-provider";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} h-screen w-full overflow-x-clip bg-white text-black`}
+        className={`${inter.className} h-screen w-full overflow-x-clip bg-sky-100 text-black`}
       >
         <UserProvider>
-          <nav className="absolute left-0 top-0 h-20 w-full overflow-clip">
+          {/* <nav className="absolute left-0 top-0 h-20 w-full">
             <TitleBar title={"Ankiety"} />
-          </nav>
-          <main className="h-full overflow-auto bg-sky-100 pt-20">
-            {children}
-          </main>
+          </nav> */}
+          <Navbar />
+          <main className="h-screen pt-20">{children}</main>
         </UserProvider>
       </body>
     </html>
