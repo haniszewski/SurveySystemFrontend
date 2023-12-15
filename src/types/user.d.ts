@@ -9,6 +9,7 @@ type CreateUser = {
   email: string;
   username: string;
   password: string;
+  repeat: string;
 };
 
 type LoginUser = {

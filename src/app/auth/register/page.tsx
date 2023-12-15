@@ -11,6 +11,12 @@ const RegisterPage = () => {
   const router = useRouter();
   const handleRegister = (values: unknown) => {
     const data = values as CreateUser;
+
+    if (data.password !== data.repeat) {
+      setError("Hasła nie są takie same");
+      return;
+    }
+
     return fetch("/auth/api/register", {
       method: "POST",
       headers: {

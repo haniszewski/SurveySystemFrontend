@@ -29,8 +29,6 @@ export default async function Index() {
       4: "Zakończona",
     };
 
-    console.log(data);
-
     const rows = data.map((row) => ({
       id: row.id,
       title: row.name,
